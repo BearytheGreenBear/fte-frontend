@@ -18,7 +18,6 @@ type: tangibles
     <td>Setting up website</td>
     <td>Making an interactive scrum board</td>
     <td>Changing the theme</td>
-    <td>Set up utterances</td>
   </tr>
   <tr>
     <td>All members of the team can commit to frontend</td>
@@ -26,7 +25,8 @@ type: tangibles
   </tr>
   <tr>
     <td>Scrum board</td>
-    <td>Week 1 plans</td>
+    <td>Project Plans</td>
+    <td>Utterances</td>
   </tr>
 </table>
 
