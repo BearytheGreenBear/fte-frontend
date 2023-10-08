@@ -7,8 +7,10 @@ baseurl: "/flag-to-emoji"
 minima:
   social_links:
     - { platform: github, user_url: "https://github.com/nighthawkcoders"}
-    - { platform: github, user_url: "https://github.com/Tirth-Thakkar"}
-    - { platform: github, user_url: "https://github.com/h4seeb-cmd"}
+    - { platform: github, user_url: "https://github.com/trevorhuang1"}
+    - { platform: github, user_url: "https://github.com/BearytheGreenBear"}
+    - { platform: github, user_url: "https://github.com/iwu78"}
+    - { platform: github, user_url: "https://github.com/jasonguan1012"}
 remote_theme: jekyll/minima
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
