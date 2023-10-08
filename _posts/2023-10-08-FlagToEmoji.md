@@ -2,10 +2,10 @@
 toc: false
 comments: true
 layout: post
-title: Flag to Emoji
+title: Image Manipulation
 description: Upload an image
 type: hacks
-courses: { compsci: {week: 7} }
+courses: { compsci: {week: 1} }
 ---
 
 <head>
@@ -23,6 +23,7 @@ courses: { compsci: {week: 7} }
             width: 50%;
             padding: 20px;
             box-sizing: border-box;
+            color: black;
         }
         .left-half {
             background-color: #f0f0f0;

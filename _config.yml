@@ -1,18 +1,9 @@
 title: Flag to Emoji
 description: "August 2023 to June 2024"
-<<<<<<< HEAD
-owner_name: IJKT
-github_username: trevorhuang1
-github_repo: "Nighthawk-Pages"
-baseurl: "/Nighthawk-Pages"
-#remote_theme: "lone-wolf-theme"
-remote_theme: jekyll/minima
-=======
 owner_name: Kyle Liang
 github_username: BearytheGreenBear
 github_repo: "fte-frontend"
 baseurl: "/flag-to-emoji"
->>>>>>> 301a8c703f21a7afea8b7dd1c8bf816bf7f87585
 minima:
   social_links:
     - { platform: github, user_url: "https://github.com/nighthawkcoders"}
