@@ -10,23 +10,24 @@ type: tangibles
 
 <table id="table">
   <tr>
+    <th>To Do</th>
     <th>In Progress</th>
     <th>Completed</th>
-    <th>Deployed</th>
   </tr>
   <tr>
-    <td>Setting up website</td>
-    <td>Making an interactive scrum board</td>
-    <td>Changing the theme</td>
-  </tr>
-  <tr>
-    <td>All members of the team can commit to frontend</td>
-    <td>All members of the team can commit to backend</td>
-  </tr>
-  <tr>
+    <td>Deploy AWS</td>
+    <td>Utterance comments</td>
     <td>Scrum board</td>
-    <td>Project Plans</td>
-    <td>Utterances</td>
+  </tr>
+  <tr>
+    <td>Make an interactive scrum board</td>
+    <td>All members of the team can commit to backend</td>
+    <td>All members of the team can commit to frontend</td>
+  </tr>
+  <tr>
+    <td>Change the website theme</td>
+    <td>Front end is cleaned up</td>
+    <td>Project plans for now</td>
   </tr>
 </table>
 
