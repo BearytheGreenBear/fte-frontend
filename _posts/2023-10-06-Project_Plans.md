@@ -18,6 +18,7 @@ After the data compression tech talk, our group became fascinated with the possi
 - Jason Guan: Frontend
 - Kyle Liang: Backend
 
+<img src="../../../images/FrontendDesign.jpg" alt="FrontendDesign" style="width: 600px;height:600px">
 
 ## Use of the website
 It’s always nice to take photos to capture the essence of a moment, but sometimes that gets bland. Our group took this into consideration when choosing our passion project. The goal is to be able to manipulate the image in various ways such as grayscale, red scale, blue scale, sizing up, and sizing down. Due to the fact that we may not know how long these actions will take, our goal is finish setting up a website, and upload and download functions first, then based on the time left whether we want to do the above mentioned or something more ambitious.
@@ -48,10 +49,6 @@ It’s always nice to take photos to capture the essence of a moment, but someti
     - Specifically, help work on the code that manipulates the image
     - Make sure that the frontend looks acceptable
 - Research how to manipulate images
-
-
-<img src="../../../images/FrontendDesign.jpg" alt="FrontendDesign" style="width: 300px;height:300px">
-
 
 ## Trevor
 - Change the background theme to match Jason's design
