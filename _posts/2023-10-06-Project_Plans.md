@@ -10,7 +10,7 @@ type: plans
 
 
 ## Intro
-After the data compression tech talk, our group became fascinated with the possibilities of manipulating images. That’s why we created the project PixelPioneer.
+After the data compression tech talk, our group became fascinated with the possibilities of manipulating images. We explored and did some research, and had the idea to match an image to an emoji. After doing further research, however, we quickly realized that that was extremely ambitious, and we should probably start with something simpler. We settled on image manipulation, such as pixelating and redscaling, inspired by the greyscale examplse project. We decided that if we had enough time after setting up uploading and downloading images on our website, we would try to attempt the emoji project.
 
 ## Roles
 - Ian Wu: Scrum Master, Backend
@@ -20,7 +20,7 @@ After the data compression tech talk, our group became fascinated with the possi
 
 
 ## Use of the website
-It’s always nice to take photos to capture the essence of a moment, but sometimes that gets bland. Our group took this into consideration when choosing our passion project. The goal is to be able to manipulate the image in various ways such as grayscale, red scale, blue scale, sizing up, and sizing down
+It’s always nice to take photos to capture the essence of a moment, but sometimes that gets bland. Our group took this into consideration when choosing our passion project. The goal is to be able to manipulate the image in various ways such as grayscale, red scale, blue scale, sizing up, and sizing down. Due to the fact that we may not know how long these actions will take, our goal is finish setting up a website, and upload and download functions first, then based on the time left whether we want to do the above mentioned or something more ambitious.
 
 ## Challenge
 - If we finish with time to spare, maybe try using tensorflow to also identify the image that the user inputted
