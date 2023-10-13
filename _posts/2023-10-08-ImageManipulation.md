@@ -35,18 +35,24 @@ courses: { compsci: {week: 1} }
             background-color: #e0e0e0;
             text-align: center;
         }
+        .p1 {
+        font-family: 'Playfair Display', serif;
+        color: blue; /* This is a new text color for elements with class, .p1 */
+    }
     </style>
+
+
 </head>
 <body>
     <div class="container">
         <div class="left-half">
-            <h2>Upload an Image</h2>
+            <p class="p1">Upload an Image</p>
             <input type="file" id="imageInput" accept="image/*">
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
         </div>
         <div class="right-half">
-            <h2>Image Manipulation</h2>
-            <button id="manipulateButton">Manipulate Image</button>
+            <p class="p1">Image Manipulation</p>
+            <button id="manipulateButton">Manipulate!</button>
         </div>
     </div>
 </body>
