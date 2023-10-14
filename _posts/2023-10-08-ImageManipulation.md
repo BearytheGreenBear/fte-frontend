@@ -19,11 +19,48 @@ courses: { compsci: {week: 1} }
             align-items: center;
             height: 100vh;
         }
+        @keyframes rgbLightEffect {
+            0% {
+               border-color: red;
+            }
+            10% {
+                border-color: yellow;
+            }
+            20% {
+                border-color: lime;
+            }
+            30% {
+                border-color: aqua;
+            }
+            40% {
+                border-color: blue;
+            }
+            50% {
+                border-color: fuchsia;
+            }
+            60% {
+                border-color: blue;
+            }
+            70% {
+                border-color: aqua;
+            }
+            80% {
+                border-color: lime;
+            }
+            90% {
+                border-color: yellow;
+            }
+            100% {
+                border-color: red;
+            }
+        }
         .left-half, .right-half {
             width: 50%;
             padding: 20px;
             box-sizing: border-box;
             color: black;
+            border: 5.5px solid transparent;
+            animation: rgbLightEffect 7.7s linear infinite;
         }
         .left-half {
             background-color: #f0f0f0;
