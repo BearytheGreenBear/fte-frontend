@@ -63,23 +63,30 @@ courses: { compsci: {week: 1} }
             animation: rgbLightEffect 7.7s linear infinite;
         }
         .left-half {
-            background-color: #f0f0f0;
+            background-color: #333333;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .right-half {
-            background-color: #e0e0e0;
+            background-color: #444444;
             text-align: center;
         }
         .p1 {
-        font-family: 'Playfair Display', serif;
-        color: blue; /* This is a new text color for elements with class, .p1 */
-    }
+            font-family: 'Verdana', sans-serif;
+            color: green;
+            /* src: url('fonts/fontface.css'); */
+        }
+        /* @font-face {
+        font-family: 'Roblox';
+        src: url('Roblox-Font-Bold.ttf');
+        } */
     </style>
 
 
+
 </head>
+
 <body>
     <div class="container">
         <div class="left-half">
