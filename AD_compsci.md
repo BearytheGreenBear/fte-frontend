@@ -1,6 +1,6 @@
 ---
 layout: scheduleStudent
 title: Passion Project Time Box
-units: "1,2"
+units: "1"
 course: compsci
 ---
