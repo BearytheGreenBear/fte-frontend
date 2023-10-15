@@ -74,6 +74,7 @@ courses: { compsci: {week: 1} }
         }
         .p1 {
             font-family: 'Verdana', sans-serif;
+            color: #CCCCCC;
             /* src: url('fonts/fontface.css'); */
         }
         /* @font-face {
@@ -81,12 +82,14 @@ courses: { compsci: {week: 1} }
         src: url('Roblox-Font-Bold.ttf');
         } */
         .container2 {
-            background-color: #336699;
+            background-color: #444444;
             display: flex;
             flex-direction: column;
-            align-items: bottom;
+            align-items: center;
             font-family: 'Verdana', sans-serif;
             color: #CCCCCC;
+            border: 5.5px solid transparent;
+            animation: rgbLightEffect 7.7s linear infinite;
         }
     </style>
 
@@ -99,13 +102,15 @@ courses: { compsci: {week: 1} }
 <body>
     <div class="container">
         <div class="left-half">
-            <p class="p1">Upload an Image</p>
+            <h1 class="p1"><strong>Upload an Image</strong></h1>
+            <br><br><br>
             <input type="file" id="imageInput" accept="image/*">
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
         </div>
         <div class="right-half">
-            <p class="p1">Image Manipulation</p>
-            <button id="manipulateButton">Manipulate!</button>
+            <h1 class="p1"><strong>Image Manipulation</strong></h1>
+            <br><br><br>
+            <button id="manipulateButton">-- -- M a n i p u l a t e !-- --</button>
         </div>
     </div>
     <div class="container2">
@@ -113,7 +118,11 @@ courses: { compsci: {week: 1} }
             <h1 class="p1"><Strong>Wondering How This is Functioning?</Strong></h1>
         </div>
         <div>
-            <h4 class="p1">Say how this code works, how it is manipulating the image to pixel...</h4>
+            <h4 class="p1">Say how this code works, how it is manipulating the image to pixelated...</h4>
         </div>
     </div>
 </body>
+<br><br><br>
+
+
+
