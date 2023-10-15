@@ -91,6 +91,7 @@ courses: { compsci: {week: 1} }
             color: #CCCCCC;
             border: 5.5px solid transparent;
             animation: rgbLightEffect 7.7s linear infinite;
+            overflow: break-word;
         }
     </style>
 
@@ -122,8 +123,26 @@ courses: { compsci: {week: 1} }
             <h4 class="p1">Say how this code works, how it is manipulating the image to pixelated...</h4>
         </div>
     </div>
+
+<script>
+    //getting the image inputted by user
+    const image = document.getElementById("imageInput");
+    //add event listener for when image is uploaded and declare function on the spot
+    image.addEventListener("change", function(){
+        //taking the first part of object FileList
+        const file = image.files[0];
+        //creates new instance of the FileReader object
+        var reader = new FileReader;
+
+        //listens for when the file is fully read
+        reader.addEventListener("load", function() {
+            console.log(reader.result);
+        })
+
+        //initiates the reading process and reads the file as a data URL
+        reader.readAsDataURL(file);
+});
+</script>
+
 </body>
 <br><br><br>
-
-
-
