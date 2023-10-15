@@ -74,18 +74,27 @@ courses: { compsci: {week: 1} }
         }
         .p1 {
             font-family: 'Verdana', sans-serif;
-            color: green;
             /* src: url('fonts/fontface.css'); */
         }
         /* @font-face {
         font-family: 'Roblox';
         src: url('Roblox-Font-Bold.ttf');
         } */
+        .container2 {
+            background-color: #336699;
+            display: flex;
+            flex-direction: column;
+            align-items: bottom;
+            font-family: 'Verdana', sans-serif;
+            color: #CCCCCC;
+        }
     </style>
 
 
 
 </head>
+
+
 
 <body>
     <div class="container">
@@ -97,6 +106,14 @@ courses: { compsci: {week: 1} }
         <div class="right-half">
             <p class="p1">Image Manipulation</p>
             <button id="manipulateButton">Manipulate!</button>
+        </div>
+    </div>
+    <div class="container2">
+        <div>
+            <h1 class="p1"><Strong>Wondering How This is Functioning?</Strong></h1>
+        </div>
+        <div>
+            <h4 class="p1">Say how this code works, how it is manipulating the image to pixel...</h4>
         </div>
     </div>
 </body>
