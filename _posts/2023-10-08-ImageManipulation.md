@@ -125,22 +125,34 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
-    //getting the image inputted by user
-    const image = document.getElementById("imageInput");
-    //add event listener for when image is uploaded and declare function on the spot
-    image.addEventListener("change", function(){
-        //taking the first part of object FileList
-        const file = image.files[0];
-        //creates new instance of the FileReader object
-        var reader = new FileReader;
+    function imageUpload(callback){
+        //getting the image inputted by user
+        const image = document.getElementById("imageInput");
+        let result;
+        //add event listener for when image is uploaded and declare function on the spot
+        image.addEventListener("change", function(){
+            //taking the first part of object FileList
+            const file = image.files[0];
+            //creates new instance of the FileReader object
+            const reader = new FileReader;
 
-        //listens for when the file is fully read
-        reader.addEventListener("load", function() {
-            console.log(reader.result);
-        })
+            //listens for when the file is fully read
+            reader.addEventListener("load", function() {
+                result = reader.result;
+                callback(result);
+            })
 
-        //initiates the reading process and reads the file as a data URL
-        reader.readAsDataURL(file);
+            //initiates the reading process and reads the file as a data URL
+            reader.readAsDataURL(file);
+        });
+        return result;
+    }
+
+// displays once user presses button
+document.getElementById("manipulateButton").addEventListener("click", function() {
+    imageUpload(function(result) {
+        console.log(result);
+    });
 });
 </script>
 
