@@ -55,8 +55,8 @@ courses: { compsci: {week: 1} }
             }
         }
         .left-half, .right-half {
-            width: 45%;
-            height: 35%;
+            width: 400px;
+            height: 400px;
             padding: 20px;
             box-sizing: border-box;
             color: black;
