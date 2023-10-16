@@ -125,35 +125,30 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
-    function imageUpload(callback){
-        //getting the image inputted by user
-        const image = document.getElementById("imageInput");
-        let result;
-        //add event listener for when image is uploaded and declare function on the spot
-        image.addEventListener("change", function(){
-            //taking the first part of object FileList
-            const file = image.files[0];
-            //creates new instance of the FileReader object
-            const reader = new FileReader;
+    function handleImageUpload() {
+        const imageInput = document.getElementById('imageInput');
+        const uploadedImage = document.getElementById('uploadedImage');
 
-            //listens for when the file is fully read
-            reader.addEventListener("load", function() {
-                result = reader.result;
-                callback(result);
-            })
+        imageInput.addEventListener('change', function () {
+            const file = imageInput.files[0];
+            if (file) {
+                const reader = new FileReader();
 
-            //initiates the reading process and reads the file as a data URL
-            reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block';
+
+                    const base64Data = e.target.result.split(',')[1];
+                    console.log(base64Data);
+
+                };
+
+                reader.readAsDataURL(file);
+            }
         });
-        return result;
     }
-
-// displays once user presses button
-document.getElementById("manipulateButton").addEventListener("click", function() {
-    imageUpload(function(result) {
-        console.log(result);
-    });
-});
+    const manipulateButton = document.getElementById('manipulateButton');
+    manipulateButton.addEventListener('click', handleImageUpload);
 </script>
 
 </body>
