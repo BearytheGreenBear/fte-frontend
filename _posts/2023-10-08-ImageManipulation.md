@@ -128,6 +128,7 @@ courses: { compsci: {week: 1} }
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
+        const leftHalf = document.getElementById('left-half'); //new code
 
         const file = imageInput.files[0];
         if (file) {
@@ -140,6 +141,12 @@ courses: { compsci: {week: 1} }
                     const base64Data = e.target.result.split(',')[1];
                     console.log(base64Data);
 
+                        const img = new Image(); //new codes STARTS HERE
+                        img.src = e.target.result;
+                        img.onload = function() {
+                            leftHalf.style.width = img.width + 'px'; 
+                            leftHalf.style.height = img.height + 'px';
+                        }; //new codes added END HERE
                 };
                 //reads file as data url (base64)
                 reader.readAsDataURL(file);
