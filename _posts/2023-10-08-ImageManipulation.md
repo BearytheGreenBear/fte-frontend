@@ -129,24 +129,22 @@ courses: { compsci: {week: 1} }
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
 
-        imageInput.addEventListener('change', function () {
-            const file = imageInput.files[0];
-            if (file) {
-                const reader = new FileReader();
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
 
-                reader.onload = function (e) {
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = 'block';
+            reader.onload = function (e) {
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
 
-                    const base64Data = e.target.result.split(',')[1];
-                    console.log(base64Data);
+                const base64Data = e.target.result.split(',')[1];
+                console.log(base64Data);
+            };
 
-                };
-
-                reader.readAsDataURL(file);
-            }
-        });
+            reader.readAsDataURL(file);
+        }
     }
+
     const manipulateButton = document.getElementById('manipulateButton');
     manipulateButton.addEventListener('click', handleImageUpload);
 </script>
