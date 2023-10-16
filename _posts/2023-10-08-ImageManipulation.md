@@ -55,8 +55,8 @@ courses: { compsci: {week: 1} }
             }
         }
         .left-half, .right-half {
-            width: 400px;
-            height: 400px;
+            width: 45%;
+            height: 35%;
             padding: 20px;
             box-sizing: border-box;
             color: black;
@@ -125,24 +125,19 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
-    //function to be called later 
     function handleImageUpload() {
-        //setting up variables
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
 
-        //add event listener for when an image is uploaded
-        imageInput.addEventListener('change', function () {
-            // taking first part of object FileList from imageInput
-            const file = imageInput.files[0];
-            //if file exists
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = 'block';
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
 
-                    var base64Data = e.target.result.split(',')[1];
+            reader.onload = function (e) {
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
+
+                    const base64Data = e.target.result.split(',')[1];
                     console.log(base64Data);
 
                 };
@@ -151,7 +146,7 @@ courses: { compsci: {week: 1} }
             }
         });
     }
-    //runs the handleImageUpload function when button is clicked
+
     const manipulateButton = document.getElementById('manipulateButton');
     manipulateButton.addEventListener('click', handleImageUpload);
 </script>
