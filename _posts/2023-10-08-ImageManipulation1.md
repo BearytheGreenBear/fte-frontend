@@ -55,8 +55,8 @@ courses: { compsci: {week: 1} }
             }
         }
         .left-half, .right-half {
-            width: 45%;
-            height: 35%;
+            width: 50%;
+            height: 27%;
             padding: 20px;
             box-sizing: border-box;
             color: black;
@@ -125,35 +125,23 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
-    //function to be called later 
-    function handleImageUpload() {
-        //setting up variables
-        const imageInput = document.getElementById('imageInput');
-        const uploadedImage = document.getElementById('uploadedImage');
+    //getting the image inputted by user
+    const image = document.getElementById("imageInput");
+    //add event listener for when image is uploaded and declare function on the spot
+    image.addEventListener("change", function(){
+        //taking the first part of object FileList
+        const file = image.files[0];
+        //creates new instance of the FileReader object
+        var reader = new FileReader;
 
-        //add event listener for when an image is uploaded
-        imageInput.addEventListener('change', function () {
-            // taking first part of object FileList from imageInput
-            const file = imageInput.files[0];
-            //if file exists
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = 'block';
+        //listens for when the file is fully read
+        reader.addEventListener("load", function() {
+            console.log(reader.result);
+        })
 
-                    const base64Data = e.target.result.split(',')[1];
-                    console.log(base64Data);
-
-                };
-                //reads file as data url (base64)
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-    //runs the handleImageUpload function when button is clicked
-    const manipulateButton = document.getElementById('manipulateButton');
-    manipulateButton.addEventListener('click', handleImageUpload);
+        //initiates the reading process and reads the file as a data URL
+        reader.readAsDataURL(file);
+});
 </script>
 
 </body>
