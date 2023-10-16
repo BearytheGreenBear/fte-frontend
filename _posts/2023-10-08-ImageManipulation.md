@@ -120,7 +120,7 @@ courses: { compsci: {week: 1} }
             <h1 class="p1"><Strong>Wondering How This is Functioning?</Strong></h1>
         </div>
         <div>
-            <h4 class="p1">Say how this code works, how it is manipulating the image to pixelated...</h4>
+            <h4 class="p1">This manipulation works by WHAT???????</h4>
         </div>
     </div>
 
