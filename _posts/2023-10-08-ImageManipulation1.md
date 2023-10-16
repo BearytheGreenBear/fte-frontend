@@ -2,7 +2,7 @@
 toc: false
 comments: true
 layout: post
-title: Image Manipulation
+title: Image Manipulation Part 1
 description: Upload an image
 type: hacks
 courses: { compsci: {week: 1} }
