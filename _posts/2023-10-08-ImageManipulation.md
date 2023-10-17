@@ -17,7 +17,7 @@ courses: { compsci: {week: 1} }
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100vh;
+            height: 60vh;
         }
         @keyframes rgbLightEffect {
             0% {
@@ -54,9 +54,9 @@ courses: { compsci: {week: 1} }
                 border-color: red;
             }
         }
-        .left-half, .right-half {
-            width: 400px;
-            height: 400px;
+        .left-half, .right-half, .bottom-half{
+            width: 500px;
+            height: 300px;
             padding: 20px;
             box-sizing: border-box;
             color: black;
@@ -72,6 +72,12 @@ courses: { compsci: {week: 1} }
         .right-half {
             background-color: #444444;
             text-align: center;
+        }
+        .bottom-half {
+            background-color: #555555;
+            text-align: center;
+            align-items: center;
+            width: 100%;
         }
         .p1 {
             font-family: 'Verdana', sans-serif;
@@ -105,17 +111,19 @@ courses: { compsci: {week: 1} }
     <div class="container">
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
-            <br><br><br>
             <input type="file" id="imageInput" accept="image/*">
-            <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
         </div>
         <div class="right-half">
             <h1 class="p1"><strong>Image Manipulation</strong></h1>
-            <br><br><br>
             <button id="manipulateButton">-- -- M a n i p u l a t e !-- --</button>
         </div>
     </div>
-    <p id='result'></p>
+    <div class="container">
+        <div class="bottom-half">
+            <h1 class="p1"><strong>Uploaded Image</strong></h1>
+            <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
+        </div>
+    </div>
     <div class="container2">
         <div>
             <h1 class="p1"><Strong>How does this work?</Strong></h1>
@@ -126,21 +134,6 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
-    const resultContainer = document.getElementById("result");
-    const url = "idktheurlwellputitherelater/pixel-partner-api";
-    const test_url = url + "/test/";
-    const pixelate_url = url + "/pixelate/";
-    const options = {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'omit', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    };
-    const put_options = {...options, method: 'PUT'};
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
@@ -149,20 +142,20 @@ courses: { compsci: {week: 1} }
         const file = imageInput.files[0];
         if (file) {
             const reader = new FileReader();
+            reader.readAsDataURL(file);
 
             reader.onload = function (e) {
                 uploadedImage.src = e.target.result;
                 uploadedImage.style.display = 'block';
-
                     const base64Data = e.target.result.split(',')[1];
                     console.log(base64Data);
 
-                        const img = new Image(); //new codes STARTS HERE
-                        img.src = e.target.result;
-                        img.onload = function() {
-                            leftHalf.style.width = img.width + 'px'; 
-                            leftHalf.style.height = img.height + 'px';
-                        }; //new codes added END HERE
+                    const img = new Image(); //new codes STARTS HERE
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'left-half'
+                        parent.style.height = img.height + 'px';
+                    }; //new codes added END HERE
                 };
             }
         };
