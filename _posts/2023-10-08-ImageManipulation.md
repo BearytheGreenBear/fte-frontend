@@ -115,6 +115,7 @@ courses: { compsci: {week: 1} }
             <button id="manipulateButton">-- -- M a n i p u l a t e !-- --</button>
         </div>
     </div>
+    <p id='result'></p>
     <div class="container2">
         <div>
             <h1 class="p1"><Strong>Wondering How This is Functioning?</Strong></h1>
@@ -125,6 +126,21 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
+    const resultContainer = document.getElementById("result");
+    const url = "idktheurlwellputitherelater/pixel-partner-api";
+    const test_url = url + "/test/";
+    const pixelate_url = url + "/pixelate/";
+    const options = {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'omit', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    };
+    const put_options = {...options, method: 'PUT'};
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
@@ -144,8 +160,7 @@ courses: { compsci: {week: 1} }
                 //reads file as data url (base64)
                 reader.readAsDataURL(file);
             }
-        });
-    }
+        };
 
     const manipulateButton = document.getElementById('manipulateButton');
     manipulateButton.addEventListener('click', handleImageUpload);
