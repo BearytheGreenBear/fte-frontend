@@ -118,10 +118,10 @@ courses: { compsci: {week: 1} }
     <p id='result'></p>
     <div class="container2">
         <div>
-            <h1 class="p1"><Strong>Wondering How This is Functioning?</Strong></h1>
+            <h1 class="p1"><Strong>How does this work?</Strong></h1>
         </div>
         <div>
-            <h4 class="p1">This manipulation works by WHAT???????</h4>
+            <h4 class="p1">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
         </div>
     </div>
 
