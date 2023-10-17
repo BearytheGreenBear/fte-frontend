@@ -121,7 +121,7 @@ courses: { compsci: {week: 1} }
             <h1 class="p1"><Strong>Wondering How This is Functioning?</Strong></h1>
         </div>
         <div>
-            <h4 class="p1">Say how this code works, how it is manipulating the image to pixelated...</h4>
+            <h4 class="p1">This manipulation works by WHAT???????</h4>
         </div>
     </div>
 
@@ -144,6 +144,7 @@ courses: { compsci: {week: 1} }
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
+        const leftHalf = document.getElementById('left-half'); //new code
 
         const file = imageInput.files[0];
         if (file) {
@@ -156,6 +157,12 @@ courses: { compsci: {week: 1} }
                     const base64Data = e.target.result.split(',')[1];
                     console.log(base64Data);
 
+                        const img = new Image(); //new codes STARTS HERE
+                        img.src = e.target.result;
+                        img.onload = function() {
+                            leftHalf.style.width = img.width + 'px'; 
+                            leftHalf.style.height = img.height + 'px';
+                        }; //new codes added END HERE
                 };
                 //reads file as data url (base64)
                 reader.readAsDataURL(file);
