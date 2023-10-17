@@ -164,8 +164,6 @@ courses: { compsci: {week: 1} }
                             leftHalf.style.height = img.height + 'px';
                         }; //new codes added END HERE
                 };
-                //reads file as data url (base64)
-                reader.readAsDataURL(file);
             }
         };
 
