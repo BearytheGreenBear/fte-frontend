@@ -17,7 +17,7 @@ courses: { compsci: {week: 1} }
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100vh;
+            height: 80vh;
         }
         @keyframes rgbLightEffect {
             0% {
@@ -159,4 +159,4 @@ courses: { compsci: {week: 1} }
 </script>
 
 </body>
-<br><br><br>
+<br><br><br=
