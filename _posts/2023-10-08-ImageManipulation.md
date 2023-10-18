@@ -159,4 +159,4 @@ courses: { compsci: {week: 1} }
 </script>
 
 </body>
-<br><br><br=
+<br><br>

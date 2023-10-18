@@ -6,7 +6,7 @@ permalink: /about/
 
 - The roles that each person has in this team...
 
-
+<br>
 
 
 <head>
@@ -77,8 +77,8 @@ permalink: /about/
             align-items: center;
             font-family: 'Verdana', sans-serif;
             color: #CCCCCC;
-            border: 9px solid transparent;
-            animation: rgbLightEffect 7.7s linear infinite;
+            border: 7px solid transparent;
+            animation: rgbLightEffect 6s linear infinite;
             overflow: break-word;
         }
     </style>
