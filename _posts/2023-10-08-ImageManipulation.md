@@ -57,7 +57,7 @@ courses: { compsci: {week: 1} }
         .left-half, .right-half, .bottom-half{
             width: 500px;
             height: 300px;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
             color: black;
             border: 5.5px solid transparent;
@@ -137,9 +137,19 @@ courses: { compsci: {week: 1} }
     const resultContainer = document.getElementById("result");
     const url = "http://127.0.0.1:8017/api/pixel-partner-api";
     const test_url = url + "/test";
-    const pixelate_url = url + "/pixelate";
+    const pixelate_url = url + "/pixelate/";
     const options = {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'omit', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    };
+    const post_options = {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'omit', // include, *same-origin, omit
@@ -178,20 +188,36 @@ courses: { compsci: {week: 1} }
             reader.readAsDataURL(file);
 
             reader.onload = function (e) {
-                uploadedImage.src = e.target.result;
-                uploadedImage.style.display = 'block';
-                    const base64Data = e.target.result.split(',')[1];
-                    console.log(base64Data);
-
-                    const img = new Image(); //new codes STARTS HERE
-                    img.src = e.target.result;
-                    img.onload = function() {
-                        const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'left-half'
-                        parent.style.height = img.height + 'px';
-                    }; //new codes added END HERE
-                };
-            }
-        };
+                const base64Data = e.target.result.split(',')[1];
+                // fetch the API
+                // add option to change pixelate level
+                data = {"pixelate_level": "8", "base64image": base64Data}
+                const image_options = {...post_options, method: 'POST', body: JSON.stringify(data)};
+                fetch(pixelate_url, image_options)
+                .then(response => {
+                    // check for response errors
+                    if (response.status !== 200) {
+                        error('GET API response failure: ' + response.status);
+                        return;
+                    }
+                    // valid response will have JSON data
+                    response.json().then(data => {
+                        console.log(data)
+                        const pixelatedImage = new Image();
+                        pixelatedImage.src = 'data:image/jpg;base64,' + data['base64image'];
+                        uploadedImage.src = pixelatedImage.src;
+                        uploadedImage.style.display = 'block';
+                        pixelatedImage.onload = function() {
+                            const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'left-half'  
+                            console.log(parent.clientWidth)   
+                            console.log(pixelatedImage.height)                   
+                            parent.style.height = pixelatedImage.height + 'px';
+                        }
+                    })
+                })
+            };
+        }
+    };
 
     const manipulateButton = document.getElementById('manipulateButton');
     manipulateButton.addEventListener('click', handleImageUpload);
