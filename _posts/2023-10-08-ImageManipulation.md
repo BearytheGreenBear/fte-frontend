@@ -209,9 +209,9 @@ courses: { compsci: {week: 1} }
                         uploadedImage.style.display = 'block';
                         pixelatedImage.onload = function() {
                             const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'left-half'  
-                            console.log(parent.clientWidth)   
-                            console.log(pixelatedImage.height)                   
-                            parent.style.height = pixelatedImage.height + 'px';
+                            ratio = parent.clientWidth / pixelatedImage.width
+                            height = ratio * pixelatedImage.height + 150         
+                            parent.style.height = height + 'px';
                         }
                     })
                 })
