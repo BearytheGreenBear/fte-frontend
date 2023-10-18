@@ -134,6 +134,39 @@ courses: { compsci: {week: 1} }
     </div>
 
 <script>
+    const resultContainer = document.getElementById("result");
+    const url = "http://127.0.0.1:8017/api/pixel-partner-api";
+    const test_url = url + "/test";
+    const pixelate_url = url + "/pixelate";
+    const options = {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'omit', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    };
+    // fetch the API
+    fetch(test_url, options)
+    // response is a RESTful "promise" on any successful fetch
+    .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+            error('GET API response failure: ' + response.status);
+            return;
+        }
+        // valid response will have JSON data
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+
+    // catch fetch errors (ie Nginx ACCESS to server blocked)
+    .catch(err => {
+    error(err + " " + test_url);
+    });    
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
