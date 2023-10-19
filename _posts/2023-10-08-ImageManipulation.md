@@ -173,6 +173,7 @@ courses: { compsci: {week: 1} }
         <div class="bottom-half">
             <h1 class="p1"><strong>Pixelated Image</strong></h1>
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
+            <button id="downloadButton">Download Pixelated Image</button>
         </div>
     </div>
     <div class="container2">
@@ -186,6 +187,7 @@ courses: { compsci: {week: 1} }
 
 
 <script>
+    uploadedImageName = "";
     const resultContainer = document.getElementById("result");
     // const url = "http://localhost:8017/api/pixel-partner-api";
     const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
@@ -243,6 +245,7 @@ courses: { compsci: {week: 1} }
             reader.onload = function (e) {
                 const base64Data = e.target.result.split(',')[1];
                 const fileName = file.name;
+                uploadedImageName = file.name;
                 const fileExtension = fileName.split('.').pop();
                 // fetch the API
                 // add option to change pixelate level
@@ -285,7 +288,27 @@ courses: { compsci: {week: 1} }
             };
         }
     };
+    function handleDownloadClick() {
+        const uploadedImage = document.getElementById('uploadedImage');
+        const pixelatedImage = new Image();
+        pixelatedImage.src = uploadedImage.src;
 
+        // Create an anchor element for downloading
+        const downloadLink = document.createElement('a');
+        downloadLink.href = pixelatedImage.src;
+        downloadLink.download = uploadedImageName.split('.')[0] + "_pixelated." + uploadedImageName.split('.')[1];
+        downloadLink.style.display = 'none';
+
+        // Append the anchor element to the document and trigger a click event
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+
+        // Remove the anchor element
+        document.body.removeChild(downloadLink);
+
+    }
+    const downloadButton = document.getElementById('downloadButton');
+    downloadButton.addEventListener('click', handleDownloadClick);
     const manipulateButton = document.getElementById('manipulateButton');
     manipulateButton.addEventListener('click', handleImageUpload);
 </script>
