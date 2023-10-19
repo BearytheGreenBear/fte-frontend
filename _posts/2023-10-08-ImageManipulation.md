@@ -73,7 +73,7 @@ courses: { compsci: {week: 1} }
             text-align: center;
         }
         .bottom-half {
-            background-color: #555555;
+            background-color: #222222;
             text-align: center;
             align-items: center;
             width: 100%;
@@ -132,6 +132,9 @@ courses: { compsci: {week: 1} }
             text-decoration: none;
             display: block;
         }
+        .button {
+            border-radius: 10px;
+        }
     </style>
 
 
@@ -155,25 +158,27 @@ courses: { compsci: {week: 1} }
             <div class="dropdown">
             <select id="pixelationLevel" class="dropbtn">
                 <div class="dropdown-content">
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="8" selected>8</option>
-                <option value="16">16</option>
-                <option value="32">32</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8" selected>8</option>
+                    <option value="16">16</option>
+                    <option value="32">32</option>
                 </div>
             </select>
             </div>
         </div>
         <div class="right-half">
             <h1 class="p1"><strong>Pixelator</strong></h1>
-            <button id="manipulateButton">-- -- P i x e l a t e ! -- --</button>
+            <button id="manipulateButton" class="button">-- -- P i x e l a t e ! -- --</button>
         </div>
     </div>
     <div class="container">
         <div class="bottom-half">
             <h1 class="p1"><strong>Pixelated Image</strong></h1>
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
-            <button id="downloadButton">Download Pixelated Image</button>
+            <br>
+            <button id="downloadButton" class="button">Download Pixelated Image</button>
+            <br>
         </div>
     </div>
     <div class="container2">
@@ -278,9 +283,9 @@ courses: { compsci: {week: 1} }
                                 console.log(ratio)
                                 if (ratio < 1) {
                                     const maxHeight = ratio * pixelatedImage.height
-                                    parent.style.height = (maxHeight + 150) + 'px';
+                                    parent.style.height = (maxHeight + 175) + 'px';
                                 } else {
-                                    parent.style.height = (pixelatedImage.height + 150) + 'px';
+                                    parent.style.height = (pixelatedImage.height + 175) + 'px';
                                 }
                         }
                     })
