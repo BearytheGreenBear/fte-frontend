@@ -276,11 +276,9 @@ courses: { compsci: {week: 1} }
                             uploadedImage.style.display = 'block';
 
                             pixelatedImage.onload = function() {
-                                const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'bottom-half'
+                                const parent = document.querySelector('.bottom-half');
                                 const ratio = parent.clientWidth / pixelatedImage.width;
 
-                                // Calculate the height to fit the image within the text box
-                                console.log(ratio)
                                 if (ratio < 1) {
                                     const maxHeight = ratio * pixelatedImage.height
                                     parent.style.height = (maxHeight + 175) + 'px';
