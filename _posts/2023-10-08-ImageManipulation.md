@@ -135,7 +135,8 @@ courses: { compsci: {week: 1} }
 
 <script>
     const resultContainer = document.getElementById("result");
-    const url = "http://127.0.0.1:8017/api/pixel-partner-api";
+    // const url = "http://localhost:8017/api/pixel-partner-api";
+    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
     const options = {
@@ -144,7 +145,7 @@ courses: { compsci: {week: 1} }
         cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'omit', // include, *same-origin, omit
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
     };
@@ -154,7 +155,7 @@ courses: { compsci: {week: 1} }
         cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'omit', // include, *same-origin, omit
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
     };
