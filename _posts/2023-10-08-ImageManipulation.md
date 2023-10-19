@@ -17,7 +17,6 @@ courses: { compsci: {week: 1} }
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70vh;
         }
         @keyframes rgbLightEffect {
             0% {
@@ -108,6 +107,31 @@ courses: { compsci: {week: 1} }
             border: 5.5px solid transparent;
             border-color: red;
         }
+        .dropbtn {
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content option {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
     </style>
 
 
@@ -127,15 +151,27 @@ courses: { compsci: {week: 1} }
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
             <input type="file" id="imageInput" accept="image/*">
+            <h3 class="p1">Pixelation Level: </h3>
+            <div class="dropdown">
+            <select id="pixelationLevel" class="dropbtn">
+                <div class="dropdown-content">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8" selected>8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+                </div>
+            </select>
+            </div>
         </div>
         <div class="right-half">
-            <h1 class="p1"><strong>Image Manipulation</strong></h1>
-            <button id="manipulateButton">-- -- M a n i p u l a t e !-- --</button>
+            <h1 class="p1"><strong>Pixelator</strong></h1>
+            <button id="manipulateButton">-- -- P i x e l a t e ! -- --</button>
         </div>
     </div>
     <div class="container">
         <div class="bottom-half">
-            <h1 class="p1"><strong>Uploaded Image</strong></h1>
+            <h1 class="p1"><strong>Pixelated Image</strong></h1>
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
         </div>
     </div>
@@ -189,7 +225,6 @@ courses: { compsci: {week: 1} }
             console.log(data);
         })
     })
-
     // catch fetch errors (ie Nginx ACCESS to server blocked)
     .catch(err => {
     error(err + " " + test_url);
@@ -197,6 +232,7 @@ courses: { compsci: {week: 1} }
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
+        const pixelationLevel = document.getElementById('pixelationLevel').value;
         const leftHalf = document.getElementById('left-half'); //new code
 
         const file = imageInput.files[0];
@@ -210,7 +246,7 @@ courses: { compsci: {week: 1} }
                 const fileExtension = fileName.split('.').pop();
                 // fetch the API
                 // add option to change pixelate level
-                data = {"pixelate_level": "8", "base64image": base64Data}
+                data = {"pixelate_level": pixelationLevel, "base64image": base64Data}
                 const image_options = {...post_options, method: 'POST', body: JSON.stringify(data)};
                 fetch(pixelate_url, image_options)
                 .then(response => {
@@ -222,15 +258,27 @@ courses: { compsci: {week: 1} }
                     // valid response will have JSON data
                     response.json().then(data => {
                         console.log(data)
-                        const pixelatedImage = new Image();
-                        pixelatedImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
-                        uploadedImage.src = pixelatedImage.src;
-                        uploadedImage.style.display = 'block';
-                        pixelatedImage.onload = function() {
-                            const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'left-half'  
-                            ratio = parent.clientWidth / pixelatedImage.width
-                            height = ratio * pixelatedImage.height + 150         
-                            parent.style.height = height + 'px';
+                            const pixelatedImage = new Image();
+                            pixelatedImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
+
+                            // Set a max-height for the image to fit within the text box
+                            pixelatedImage.style.maxHeight = '100%';
+
+                            uploadedImage.src = pixelatedImage.src;
+                            uploadedImage.style.display = 'block';
+
+                            pixelatedImage.onload = function() {
+                                const parent = document.querySelector('.bottom-half'); // Get the parent element with class 'bottom-half'
+                                const ratio = parent.clientWidth / pixelatedImage.width;
+
+                                // Calculate the height to fit the image within the text box
+                                console.log(ratio)
+                                if (ratio < 1) {
+                                    const maxHeight = ratio * pixelatedImage.height
+                                    parent.style.height = (maxHeight + 150) + 'px';
+                                } else {
+                                    parent.style.height = (pixelatedImage.height + 150) + 'px';
+                                }
                         }
                     })
                 })
