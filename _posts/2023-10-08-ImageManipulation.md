@@ -21,37 +21,13 @@ courses: { compsci: {week: 1} }
         }
         @keyframes rgbLightEffect {
             0% {
-               border-color: red;
-            }
-            10% {
-                border-color: yellow;
-            }
-            20% {
-                border-color: lime;
-            }
-            30% {
-                border-color: aqua;
-            }
-            40% {
-                border-color: blue;
+               border-color: #000080;
             }
             50% {
-                border-color: fuchsia;
-            }
-            60% {
-                border-color: blue;
-            }
-            70% {
-                border-color: aqua;
-            }
-            80% {
-                border-color: lime;
-            }
-            90% {
-                border-color: yellow;
+                border-color: #ADD8E6;
             }
             100% {
-                border-color: red;
+                border-color: #000080;
             }
         }
         .left-half, .right-half, .bottom-half{
