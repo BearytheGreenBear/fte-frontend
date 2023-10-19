@@ -17,7 +17,7 @@ courses: { compsci: {week: 1} }
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60vh;
+            height: 80vh;
         }
         @keyframes rgbLightEffect {
             0% {
@@ -99,6 +99,16 @@ courses: { compsci: {week: 1} }
             animation: rgbLightEffect 7.7s linear infinite;
             overflow: break-word;
         }
+        .container3 {
+            background-color: #444444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Verdana', sans-serif;
+            color: #CCCCCC;
+            border: 5.5px solid transparent;
+            border-color: #234823;
+        }
     </style>
 
 
@@ -130,6 +140,11 @@ courses: { compsci: {week: 1} }
         </div>
         <div>
             <h4 class="p1">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
+        </div>
+    </div>
+    <div class="container3">
+        <div>
+            <h1 class="p1"><Strong>JPG file type needed!</Strong></h1>
         </div>
     </div>
 
@@ -225,4 +240,4 @@ courses: { compsci: {week: 1} }
 </script>
 
 </body>
-<br><br><br>
+<br><br>
