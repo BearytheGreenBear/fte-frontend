@@ -206,6 +206,8 @@ courses: { compsci: {week: 1} }
 
             reader.onload = function (e) {
                 const base64Data = e.target.result.split(',')[1];
+                const fileName = file.name;
+                const fileExtension = fileName.split('.').pop();
                 // fetch the API
                 // add option to change pixelate level
                 data = {"pixelate_level": "8", "base64image": base64Data}
@@ -221,7 +223,7 @@ courses: { compsci: {week: 1} }
                     response.json().then(data => {
                         console.log(data)
                         const pixelatedImage = new Image();
-                        pixelatedImage.src = 'data:image/jpg;base64,' + data['base64image'];
+                        pixelatedImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
                         uploadedImage.src = pixelatedImage.src;
                         uploadedImage.style.display = 'block';
                         pixelatedImage.onload = function() {
