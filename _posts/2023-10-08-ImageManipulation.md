@@ -17,7 +17,7 @@ courses: { compsci: {week: 1} }
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80vh;
+            height: 70vh;
         }
         @keyframes rgbLightEffect {
             0% {
@@ -105,9 +105,8 @@ courses: { compsci: {week: 1} }
             flex-direction: column;
             align-items: center;
             font-family: 'Verdana', sans-serif;
-            color: #CCCCCC;
             border: 5.5px solid transparent;
-            border-color: #234823;
+            border-color: red;
         }
     </style>
 
@@ -118,6 +117,12 @@ courses: { compsci: {week: 1} }
 
 
 <body>
+    <div class="container3">
+        <div>
+            <h1 class="p1"><Strong>!! JPG file format is needed !!</Strong></h1>
+        </div>
+        <br>
+    </div>
     <div class="container">
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
@@ -142,11 +147,7 @@ courses: { compsci: {week: 1} }
             <h4 class="p1">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
         </div>
     </div>
-    <div class="container3">
-        <div>
-            <h1 class="p1"><Strong>JPG file type needed!</Strong></h1>
-        </div>
-    </div>
+
 
 <script>
     const resultContainer = document.getElementById("result");
