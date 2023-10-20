@@ -115,7 +115,7 @@ courses: { compsci: {week: 1} }
             background: url('your-background.gif') no-repeat center center fixed;
         background-size: cover;
         }
-
+        
     </style>
 
 
