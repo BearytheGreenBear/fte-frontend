@@ -55,20 +55,20 @@ courses: { compsci: {week: 1} }
             width: 100%;
         }
         .p1 {
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
-            /* src: url('fonts/fontface.css'); */
+            /* src: url('fonts/fontface.css');  */
         }
-        /* @font-face {
+        /*@font-face {
         font-family: 'Roblox';
-        src: url('Roblox-Font-Bold.ttf');
+        src: url('.././fonts/Roblox-Font.ttf');
         } */
         .container2 {
             background-color: #444444;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
             border: 5.5px solid transparent;
             animation: rgbLightEffect 7.7s linear infinite;
@@ -79,7 +79,7 @@ courses: { compsci: {week: 1} }
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             border: 5.5px solid transparent;
             border-color: red;
         }
@@ -111,6 +111,11 @@ courses: { compsci: {week: 1} }
         .button {
             border-radius: 10px;
         }
+        body {
+            background: url('your-background.gif') no-repeat center center fixed;
+        background-size: cover;
+        }
+
     </style>
 
 
@@ -120,6 +125,7 @@ courses: { compsci: {week: 1} }
 
 
 <body>
+<img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF">
     <div class="container3">
         <div>
             <h1 class="p1"><Strong>!! JPG file format is needed !!</Strong></h1>
