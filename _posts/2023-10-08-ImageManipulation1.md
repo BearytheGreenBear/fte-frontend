@@ -151,11 +151,11 @@ body {
 
 </head>
 
-
+<!-- GIF HERE!!! -> "https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" -->
 
 <body>
     <div class="box">
-            <h2>WELCOME!!</h2>
+            <h2><strong>WELCOME!!</strong></h2>
         </div>
     <div class="container">
         <div class="left-half">

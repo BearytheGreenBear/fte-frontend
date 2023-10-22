@@ -111,10 +111,6 @@ courses: { compsci: {week: 1} }
         .button {
             border-radius: 10px;
         }
-        body {
-            background: url('your-background.gif') no-repeat center center fixed;
-        background-size: cover;
-        }
         {
             margin: 0;
             padding: 0;
@@ -163,6 +159,7 @@ courses: { compsci: {week: 1} }
         }
         .box h2 {
             position: relative;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #fff;
             font-size: 10em;
             z-index: 10;
@@ -177,7 +174,7 @@ courses: { compsci: {week: 1} }
 
 <body>
     <div class="box">
-            <h2>WELCOME!!</h2>
+            <h2><strong>WELCOME!!</strong></h2>
         </div>
         <br><br><br><br>
 <!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
