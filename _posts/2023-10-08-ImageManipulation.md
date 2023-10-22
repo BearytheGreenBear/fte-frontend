@@ -115,7 +115,58 @@ courses: { compsci: {week: 1} }
             background: url('your-background.gif') no-repeat center center fixed;
         background-size: cover;
         }
-        
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh; 
+            background: #0e1537;
+            }
+        .box {
+            position: relative;
+            width: 880px;
+            height: 350px;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            background: rgba(0,0,0,0.5);
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .box::before {
+            content: '';
+            position: absolute; 
+            width: 150px; 
+            height: 275%;
+            background: linear-gradient(#00ccff,#d400d4);
+            animation: animate 4s linear infinite;
+        }
+        .box::after {
+            content: ''; 
+            position: absolute; 
+            inset: 4px; 
+            background: #0e1538;
+            border-radius: 16px;
+        }
+        @keyframes animate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .box h2 {
+            position: relative;
+            color: #fff;
+            font-size: 10em;
+            z-index: 10;
+        }
     </style>
 
 
@@ -125,7 +176,11 @@ courses: { compsci: {week: 1} }
 
 
 <body>
-<img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF">
+    <div class="box">
+            <h2>WELCOME!!</h2>
+        </div>
+        <br><br><br><br>
+<!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
     <div class="container3">
         <div>
             <h1 class="p1"><Strong>!! JPG file format is needed !!</Strong></h1>
