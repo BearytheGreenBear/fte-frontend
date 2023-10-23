@@ -2,8 +2,8 @@
 toc: false
 comments: true
 layout: post
-title: Image Manipulation
-description: Upload an image
+title: Image Combiner
+description: Upload two images!
 type: hacks
 courses: { compsci: {week: 1} }
 ---
@@ -145,31 +145,25 @@ courses: { compsci: {week: 1} }
 
 <body>
     <div class="container3">
-        <div>
-            <h1 class="p1"><Strong>!! JPG file format is needed !!</Strong></h1>
-        </div>
-        <br>
     </div>
     <div class="container">
         <div class="left-half">
-            <h1 class="p1"><strong>Upload an Image</strong></h1>
+            <h1 class="p1"><strong>Upload Images!</strong></h1>
             <input type="file" id="imageInput" accept="image/*">
-            <h3 class="p1">Pixelation Level: </h3>
+            <input type="file" id="imageInput2" accept="image/*">
+            <h3 class="p1">Merge Direction: </h3>
             <div class="dropdown">
-            <select id="pixelationLevel" class="dropbtn">
+            <select id="direction" class="dropbtn">
                 <div class="dropdown-content">
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="8" selected>8</option>
-                    <option value="16">16</option>
-                    <option value="32">32</option>
+                    <option value="Vertical">Vertical</option>
+                    <option value="Horizontal">Horizontal</option>
                 </div>
             </select>
             </div>
         </div>
         <div class="right-half">
-            <h1 class="p1"><strong>Pixelator</strong></h1>
-            <button id="manipulateButton" class="button">-- -- P i x e l a t e ! -- --</button>
+            <h1 class="p1"><strong>Merge</strong></h1>
+            <button id="manipulateButton" class="button">-- -- Merge ! -- --</button>
         </div>
     </div>
     <div class="container">
@@ -198,6 +192,7 @@ courses: { compsci: {week: 1} }
     // const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
+    const combine_url = url + "/combine/";
     const options = {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -235,71 +230,94 @@ courses: { compsci: {week: 1} }
     // catch fetch errors (ie Nginx ACCESS to server blocked)
     .catch(err => {
     error(err + " " + test_url);
-    });    
+    });
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
+        const imageInput2 = document.getElementById('imageInput2');
         const uploadedImage = document.getElementById('uploadedImage');
-        const pixelationLevel = document.getElementById('pixelationLevel').value;
+        const direction = document.getElementById('direction').value;
         const leftHalf = document.getElementById('left-half'); //new code
 
         const file = imageInput.files[0];
-        if (file) {
+        const file2 = imageInput2.files[0];
+        if (file && file2) { // Check if both files are selected
             const reader = new FileReader();
+            const reader2 = new FileReader();
+            let image1Data = ""; // Base64 data for the first image
+            let image2Data = ""; // Base64 data for the second image
+
             reader.readAsDataURL(file);
+            reader2.readAsDataURL(file2);
 
             reader.onload = function (e) {
-                const base64Data = e.target.result.split(',')[1];
+                image1Data = e.target.result.split(',')[1];
                 const fileName = file.name;
                 uploadedImageName = file.name;
                 const fileExtension = fileName.split('.').pop();
-                // fetch the API
-                // add option to change pixelate level
-                data = {"pixelate_level": pixelationLevel, "base64image": base64Data}
-                const image_options = {...post_options, method: 'POST', body: JSON.stringify(data)};
-                fetch(pixelate_url, image_options)
-                .then(response => {
-                    // check for response errors
-                    if (response.status !== 200) {
-                        error('GET API response failure: ' + response.status);
-                        return;
-                    }
-                    // valid response will have JSON data
-                    response.json().then(data => {
-                        console.log(data)
-                            const pixelatedImage = new Image();
-                            pixelatedImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
 
-                            // Set a max-height for the image to fit within the text box
-                            pixelatedImage.style.maxHeight = '100%';
+                reader2.onload = function (f) {
+                    image2Data = f.target.result.split(',')[1];
 
-                            uploadedImage.src = pixelatedImage.src;
-                            uploadedImage.style.display = 'block';
+                    // Fetch the API with both image data
+                    data = {"direction": direction, "base64image1": image1Data, "base64image2": image2Data}
+                    console.log(data)
+                    const imageOptions = {...post_options, method: 'POST', body: JSON.stringify(data)};
+                    fetch(combine_url, imageOptions)
+                        .then(response => {
+                            // Check for response errors
+                            if (response.status !== 200) {
+                                error('GET API response failure: ' + response.status);
+                                return;
+                            }
+                            // Valid response will have JSON data
+                            response.json().then(data => {
+                                console.log(data)
+                                const pixelatedImage = new Image();
+                                pixelatedImage.src = 'data:image/' + fileExtension + ';base64,' + data['base64image'];
 
-                            pixelatedImage.onload = function() {
-                                const parent = document.querySelector('.bottom-half');
-                                const ratio = parent.clientWidth / pixelatedImage.width;
+                                // Set a max-height for the image to fit within the text box
+                                pixelatedImage.style.maxHeight = '100%';
 
-                                if (ratio < 1) {
-                                    const maxHeight = ratio * pixelatedImage.height
-                                    parent.style.height = (maxHeight + 175) + 'px';
-                                } else {
-                                    parent.style.height = (pixelatedImage.height + 175) + 'px';
+                                uploadedImage.src = pixelatedImage.src;
+                                uploadedImage.style.display = 'block';
+
+                                pixelatedImage.onload = function () {
+                                    const parent = document.querySelector('.bottom-half');
+                                    const ratio = parent.clientWidth / pixelatedImage.width;
+
+                                    if (ratio < 1) {
+                                        const maxHeight = ratio * pixelatedImage.height
+                                        parent.style.height = (maxHeight + 175) + 'px';
+                                    } else {
+                                        parent.style.height = (pixelatedImage.height + 175) + 'px';
+                                    }
                                 }
-                        }
-                    })
-                })
+                            })
+                        })
+                };
             };
         }
-    };
+    }
     function handleDownloadClick() {
-        const uploadedImage = document.getElementById('uploadedImage');
-        const pixelatedImage = new Image();
-        pixelatedImage.src = uploadedImage.src;
+    const uploadedImage = document.getElementById('uploadedImage');
+    const pixelatedImage = new Image();
+    pixelatedImage.src = uploadedImage.src;
+
+    const imageInput = document.getElementById('imageInput');
+    const imageInput2 = document.getElementById('imageInput2');
+    const file1 = imageInput.files[0];
+    const file2 = imageInput2.files[0];
+
+    if (file1 && file2) {
+        const name1 = file1.name.split('.')[0];
+        const name2 = file2.name.split('.')[0];
+        const extension = file1.name.split('.')[1];
+        const downloadName = name1 + '-' + name2 + '.' + extension;
 
         // Create an anchor element for downloading
         const downloadLink = document.createElement('a');
         downloadLink.href = pixelatedImage.src;
-        downloadLink.download = uploadedImageName.split('.')[0] + "_pixelated." + uploadedImageName.split('.')[1];
+        downloadLink.download = downloadName;
         downloadLink.style.display = 'none';
 
         // Append the anchor element to the document and trigger a click event
@@ -308,8 +326,8 @@ courses: { compsci: {week: 1} }
 
         // Remove the anchor element
         document.body.removeChild(downloadLink);
-
     }
+}
     const downloadButton = document.getElementById('downloadButton');
     downloadButton.addEventListener('click', handleDownloadClick);
     const manipulateButton = document.getElementById('manipulateButton');
