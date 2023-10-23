@@ -20,37 +20,13 @@ courses: { compsci: {week: 1} }
         }
         @keyframes rgbLightEffect {
             0% {
-               border-color: red;
-            }
-            10% {
-                border-color: yellow;
-            }
-            20% {
-                border-color: lime;
-            }
-            30% {
-                border-color: aqua;
-            }
-            40% {
-                border-color: blue;
+               border-color: #000080;
             }
             50% {
-                border-color: fuchsia;
-            }
-            60% {
-                border-color: blue;
-            }
-            70% {
-                border-color: aqua;
-            }
-            80% {
-                border-color: lime;
-            }
-            90% {
-                border-color: yellow;
+                border-color: #ADD8E6;
             }
             100% {
-                border-color: red;
+                border-color: #000080;
             }
         }
         .left-half, .right-half, .bottom-half{
@@ -79,20 +55,20 @@ courses: { compsci: {week: 1} }
             width: 100%;
         }
         .p1 {
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
-            /* src: url('fonts/fontface.css'); */
+            /* src: url('fonts/fontface.css');  */
         }
-        /* @font-face {
+        /*@font-face {
         font-family: 'Roblox';
-        src: url('Roblox-Font-Bold.ttf');
+        src: url('.././fonts/Roblox-Font.ttf');
         } */
         .container2 {
             background-color: #444444;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
             border: 5.5px solid transparent;
             animation: rgbLightEffect 7.7s linear infinite;
@@ -103,7 +79,7 @@ courses: { compsci: {week: 1} }
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             border: 5.5px solid transparent;
             border-color: red;
         }
@@ -135,6 +111,59 @@ courses: { compsci: {week: 1} }
         .button {
             border-radius: 10px;
         }
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh; 
+            background: #0e1537;
+            }
+        .box {
+            position: relative;
+            width: 880px;
+            height: 350px;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            background: rgba(0,0,0,0.5);
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .box::before {
+            content: '';
+            position: absolute; 
+            width: 150px; 
+            height: 275%;
+            background: linear-gradient(#00ccff,#d400d4);
+            animation: animate 4s linear infinite;
+        }
+        .box::after {
+            content: ''; 
+            position: absolute; 
+            inset: 4px; 
+            background: #0e1538;
+            border-radius: 16px;
+        }
+        @keyframes animate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .box h2 {
+            position: relative;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #fff;
+            font-size: 10em;
+            z-index: 10;
+        }
     </style>
 
 
@@ -144,6 +173,11 @@ courses: { compsci: {week: 1} }
 
 
 <body>
+    <div class="box">
+            <h2><strong>WELCOME!!</strong></h2>
+        </div>
+        <br><br><br><br>
+<!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
     <div class="container3">
         <div>
             <h1 class="p1"><Strong>!! JPG file format is needed !!</Strong></h1>
