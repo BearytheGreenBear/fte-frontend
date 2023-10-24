@@ -11,14 +11,14 @@ minima:
     - { platform: github, user_url: "https://github.com/BearytheGreenBear"}
     - { platform: github, user_url: "https://github.com/iwu78"}
     - { platform: github, user_url: "https://github.com/jasonguan1012"}
-remote_theme: jekyll/minima
+# remote_theme: jekyll/minima
 # remote_theme: "manid2/lone-wolf-theme"
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
 # remote_theme: pages-themes/hacker@v0.2.0
 # remote_theme: pages-themes/cayman@v0.2.0
 # remote_theme: pages-themes/time-machine@v0.2.0
-# theme: "lone-wolf-theme"
+theme: "lone-wolf-theme"
 plugins:
 - jekyll-remote-theme
 future: true
