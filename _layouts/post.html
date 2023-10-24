@@ -1,76 +1,102 @@
 ---
-layout: base
+layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    {%- if page.description -%}
-      {%- if site.html_escape.description -%}
-        <p class="page-description">{{ page.description | escape }}</p>
-      {%- else -%}
-        <p class="page-description">{{ page.description }}</p>
-      {%- endif -%}
-    {%- endif -%}
-    <p class="post-meta post-meta-title">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.modified_date -%}
-        ~ 
-        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {{ mdate | date: date_format }}
-        </time>
-      {%- endif -%}
-      {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-            {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif %}
-       • {% include reading_time.html -%}
-    </p>
+{% if page.image %}
+  {% capture page_image %}
+    {{ page.image | relative_url | default: '' }}
+  {% endcapture %}
 
-    {% if page.categories.size > 0 %}
-      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
-      {% for category in  page.categories  %}
-        {%- assign prefix = category | slice: 0 -%}
-        {% if prefix == "C" %}
-          <a class="category-tags-link" href="{{site.baseurl}}/categories/cte#{{category|slugize}}">{{category}}</a>
-        {% else %}
-          <a class="category-tags-link" href="{{site.baseurl}}/categories/ap#{{category|slugize}}">{{category}}</a>
-        {% endif %}
-        {% unless forloop.last %}&nbsp;{% endunless %}
-      {% endfor %}
-      </p>
-    {% endif %}
+  {% capture page_image_alt %}
+    {{ page.image_alt | default: 'page image default alt' }}
+  {% endcapture %}
 
-    {% if page.layout == 'notebook' %}
-      {% if page.badges or page.badges == nil %}
-        <div class="pb-5 d-flex flex-justify-center">
-          {% unless page.hide_github_badge or site.default_badges.github != true %}{% include notebook_github_link.html %}{% endunless %}
-          {% unless page.hide_binder_badge or site.default_badges.binder != true  %}{% include notebook_binder_link.html %}{% endunless %}
-          {% unless page.hide_colab_badge or site.default_badges.colab != true %}{% include notebook_colab_link.html %}{% endunless %}
-          {% unless page.hide_deepnote_badge or site.default_badges.deepnote != true %}{% include notebook_deepnote_link.html %}{% endunless %}
+  {% capture page_image_caption %}
+    {{ page.image_caption | default: '' }}
+  {% endcapture %}
+{% endif %}
+
+{% assign blog_author = site.data.blog.authors[0] %}
+{% capture bl_au_avatar %}
+{{ '/assets/images/' | relative_url | append: blog_author.avatar }}
+{% endcapture %}
+
+{% capture bl_au_av_alt %}
+{{ blog_author.name }} avatar.
+{% endcapture %}
+
+<section class="container mt-3 blog-post">
+  <div class="row">
+    <div class="col-md-8 pb-3">
+      {% if page.show_hero and page_image %}
+      <!-- post hero -->
+      <figure class="figure">
+        <img class="img-fluid shadow-sm rounded mb-2 blog-post-hero-img" src="{{ page_image | strip }}"
+          alt="{{ page_image_alt | strip }}">
+        <figcaption class="figure-caption text-center">{{ page_image_caption | strip }}</figcaption>
+      </figure>
+      {% endif %}
+      <!-- post title -->
+      <h1>{{ page.title }}</h1>
+      <p class="font-italic text-muted">{{ page.date | date: "%b %-d, %Y" }}</p>
+      {% if page.show_author %}
+      <!-- post author, share -->
+      <div class="row align-items-center py-2 border-top border-bottom blog-post-author">
+        <div class="col-auto pr-0 pb-1">
+          <img src="{{ bl_au_avatar | strip }}" alt="{{ bl_au_av_alt | strip }}"
+            class="rounded-circle shadow-sm blog-post-author-avatar ">
         </div>
-      {% endif -%}
-    {% endif -%}
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    {%- if page.toc -%}
-      {% include toc.html html=content %}
-    {%- endif -%}
-    {{ content }}
+        <div class="col pr-0 pb-1">
+          <p class="blog-post-author-name p-0 m-0">{{ blog_author.name }}</p>
+          <p class="blog-post-author-headline p-0 m-0">{{ blog_author.headline }}</p>
+        </div>
+        <div class="col-auto justify-content-end blog-post-author-follow">
+          <div class="dropdown">
+            <button class="btn btn-outline-info dropdown-toggle" type="button" id="followMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Follow</button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="followMenuButton">
+              {% for follow in blog_author.follow %}
+              <a class="dropdown-item pb-2 text-info" href="{{ follow.url }}"><i
+                  class="{{ follow.icon }}"></i>{{ follow.label }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if page.show_toc %}
+      <!-- post TOC -->
+      <nav class="border mt-3 d-inline-block rounded">
+        <div class="p-1 bg-info text-white">
+          <i class="fas fa-list"></i>
+          <span class="pl-1">Contents</span>
+        </div>
+        <div class="blog-post-toc m-1">
+          {% include toc.html html=content %}
+        </div>
+      </nav>
+      {% endif %}
+      <!-- Post content -->
+      <article class="mt-3 blog-post-article">
+        {{ content }}
+      </article>
+      {% if page.share %}
+      <div class="blog-post-social-share">
+        {% include social-share.html %}
+      </div>
+      {% endif %}
+    </div>
+    <!-- blog post sidebar -->
+    <div class="col-md-4 blog-post-sidebar">
+      {% include blog-post-sidebar.html %}
+    </div>
   </div>
-  {%- if page.comments -%}
-    {%- include utterances.html -%}
-  {%- endif -%}
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
+  <div class="row mt-3">
+    <div class="col-md-8">
+      {% if page.show_comments %}
+      <!-- Post comments -->
+        {%- include comments.html -%}
+      {% endif %}
+    </div>
+  </div>
+</section>

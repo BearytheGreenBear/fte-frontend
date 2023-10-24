@@ -1,83 +1,72 @@
 ---
-layout: base 
+layout: default
 ---
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+{%- assign action_btn = page.action_btn[0] -%}
+{%- assign dropdown = page.action_btn[1].dropdown -%}
+{%- assign dropdown_items = page.action_btn[2].dropdown_items -%}
 
-  {{ content | markdownify }}
+<div class="home-page">
+  <!-- home page header -->
+  <section class="home-page-header">
+    <div class="container text-center">
+      <h1 class="animated fadeInDownBig">{{ page.title | default: 'HOME' }}</h1>
+      <p class="lead">{{ page.excerpt | default: 'Excerpt' }}</p>
+      {%- if page.action -%}
+        {%- include home-action-btn.html action_btn=action_btn dropdown=dropdown dropdown_items=dropdown_items -%}
+      {%- endif -%}
+    </div>
+  </section>
 
+  <!-- home page features -->
+  <section class="home-page-features">
+    <div class="container">
+      {% if page.feature_rows %}
+      <div class="row">
+        {% for f_row in page.feature_rows %}
+        <!-- TODO use animate.css to animate on hover -->
+        <div class="col-md-4 p-0">
+          <div class="card border-0 m-3">
+            {% if f_row.img_path %}
+              {% capture img_path %}
+              {{ '/assets/images/' | relative_url | append: f_row.img_path }}
+              {% endcapture %}
+            {% endif %}
 
-  {% if site.paginate %}
-    {% assign rawposts = paginator.posts %}
-  {% else %}
-    {% assign rawposts = site.posts %}
-  {% endif %}
+            {% if f_row.img_alt %}
+              {% capture img_alt %}
+              {{ f_row.img_alt | default: 'Feature image' }}
+              {% endcapture %}
+            {% endif %}
 
-  <!-- Hide posts if front matter flag hide:true -->
-  {% assign posts = ''|split:'' %}
-  {% for post in rawposts %}
-    {% if post.hide != true %}
-      {% assign posts = posts|push:post%}
-    {% endif %}
-  {% endfor %}
+            <div class="shadow-sm rounded-top">
+              {% if img_path %}
+                <img class="img-fluid rounded-top" src="{{ img_path | strip }}" alt="{{ img_alt | strip }}">
+              {% endif %}
+            </div>
 
-  <!-- Sort posts by rank, then date -->
-  {% assign grouped_posts = posts | group_by: "sticky_rank" | sort: "name", "last" %}
-  {% assign sticky_posts = ''|split:'' %}
-  {% assign non_sticky_posts = '' | split:'' %}
-
- 
-  {% for gp in grouped_posts %}
-    {%- if gp.name == "" -%}
-      {% assign non_sticky_posts = gp.items | sort: "date" | reverse %}
-    {%- else %}
-      {% assign sticky_posts = sticky_posts | concat: gp.items %}
-    {%- endif -%}
-  {% endfor %}
-
-   <!-- Assemble final sorted posts array -->
-  {% assign sticky_posts = sticky_posts | sort: "sticky_rank", "last" %}
-  {% assign posts = sticky_posts | concat: non_sticky_posts %}
-
-  {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
-    {%- endif -%}
-    <ul class="post-list">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
-      <li>
-        {%- if site.show_image -%}
-            {%- include post_list_image_card.html -%}
-        {% else %}
-            {%- include post_list_image_card.html -%}    
-        <!-- {%- include post_list.html -%} -->
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-
-    {% if site.paginate and site.posts.size > site.paginate %}
-      <div class="pager">
-        <ul class="pagination">
-        {%- if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-          <li><div class="current-page">{{ paginator.page }}</div></li>
-        {%- if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-        </ul>
+            <div class="card-body bg-light border border-light border-top-0 rounded-bottom">
+              <a href="{{ f_row.url | relative_url }}">
+                <h2 class="m-0">
+                  {{ f_row.title | strip | strip_html | strip_newlines | truncate: 10 }}
+                </h2>
+              </a>
+              <p class="card-text">{{ f_row.excerpt | strip | strip_html | strip_newlines | truncate: 200 }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-    {%- endif %}
+      {% endif%}
+    </div>
+  </section>
 
-  {%- endif -%}
-
+  <!-- home page article -->
+  <section class="home-page-article">
+    <div class="container">
+      <article>
+        {{ content }}
+      </article>
+    </div>
+  </section>
 </div>
