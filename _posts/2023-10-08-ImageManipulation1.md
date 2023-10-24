@@ -145,19 +145,6 @@ body {
     font-size: 10em;
     z-index: 10;
     }
-    {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Verdana', sans-serif;
-    }
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        flex-direction: column;
-    }
     </style>
 
 

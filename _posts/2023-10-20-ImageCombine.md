@@ -135,6 +135,19 @@ courses: { compsci: {week: 1} }
         .button {
             border-radius: 10px;
         }
+        {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Verdana', sans-serif;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+    }
     </style>
 
 
