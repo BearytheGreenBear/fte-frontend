@@ -263,6 +263,7 @@ courses: { compsci: {week: 1} }
                         error('GET API response failure: ' + response.status);
                         return;
                     }
+
                     // valid response will have JSON data
                     response.json().then(data => {
                         console.log(data)
@@ -296,6 +297,12 @@ courses: { compsci: {week: 1} }
         const pixelatedImage = new Image();
         pixelatedImage.src = uploadedImage.src;
 
+        // checking if no images is uploaded
+        if (uploadedImage.width == 0) {
+            //sends alert
+            alert('Please upload an image before trying to download');
+            return;
+        }
         // Create an anchor element for downloading
         const downloadLink = document.createElement('a');
         downloadLink.href = pixelatedImage.src;
