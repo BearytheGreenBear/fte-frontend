@@ -74,15 +74,6 @@ courses: { compsci: {week: 1} }
             animation: rgbLightEffect 7.7s linear infinite;
             overflow: break-word;
         }
-        .container3 {
-            background-color: #444444;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'IBM Plex Sans Hebrew', monospace;
-            border: 5.5px solid transparent;
-            border-color: red;
-        }
         .dropbtn {
             color: white;
             padding: 16px;
@@ -178,10 +169,6 @@ courses: { compsci: {week: 1} }
         </div>
         <br><br><br><br>
 <!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
-    <div class="container3">
-        <div>
-            <h1 class="p1"><Strong>!! JPG file format is needed !!</Strong></h1>
-        </div>
         <br>
     </div>
     <div class="container">
