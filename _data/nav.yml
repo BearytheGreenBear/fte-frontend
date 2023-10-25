@@ -1,0 +1,10 @@
+header:
+  - title: "Features"
+    url: "/features/"
+    description: "List of features in the theme"
+  - title: "Source"
+    url: "/source/"
+    description: "Theme source code"
+  - title: "About"
+    url: "/about/"
+    description: "About ourselves and the idea for this website"
