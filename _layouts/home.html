@@ -10,8 +10,8 @@ layout: default
   <!-- home page header -->
   <section class="home-page-header">
     <div class="container text-center">
-      <h1 class="animated fadeInDownBig">{{ page.title | default: 'HOME' }}</h1>
-      <p class="lead">{{ page.excerpt | default: 'Excerpt' }}</p>
+      <h1 class="animated fadeInDownBig">{{ page.title | default: 'PIXELPARTNER' }}</h1>
+      <p class="lead">{{ page.excerpt | default: 'PixelPartner: A work in progress Image Modifier' }}</p>
       {%- if page.action -%}
         {%- include home-action-btn.html action_btn=action_btn dropdown=dropdown dropdown_items=dropdown_items -%}
       {%- endif -%}
@@ -26,7 +26,7 @@ layout: default
         {% for f_row in page.feature_rows %}
         <!-- TODO use animate.css to animate on hover -->
         <div class="col-md-4 p-0">
-          <div class="card border-0 m-3">
+          <div class="card border-0 m-3" style="height:300px">
             {% if f_row.img_path %}
               {% capture img_path %}
               {{ '/assets/images/' | relative_url | append: f_row.img_path }}
@@ -47,9 +47,9 @@ layout: default
 
             <div class="card-body bg-light border border-light border-top-0 rounded-bottom">
               <a href="{{ f_row.url | relative_url }}">
-                <h2 class="m-0">
-                  {{ f_row.title | strip | strip_html | strip_newlines | truncate: 10 }}
-                </h2>
+                <h4 class="m-0">
+                  {{ f_row.title | strip | strip_html | strip_newlines | truncate: 100 }}
+                </h4>
               </a>
               <p class="card-text">{{ f_row.excerpt | strip | strip_html | strip_newlines | truncate: 200 }}</p>
             </div>

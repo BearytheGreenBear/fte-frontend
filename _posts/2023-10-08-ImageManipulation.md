@@ -215,8 +215,8 @@ courses: { compsci: {week: 1} }
 <script>
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    const url = "http://localhost:8017/api/pixel-partner-api";
-    // const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
+    // const url = "http://localhost:8017/api/pixel-partner-api";
+    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
     const options = {
