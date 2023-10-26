@@ -107,13 +107,6 @@ courses: { compsci: {week: 1} }
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            min-height: 100vh; 
-            background: #0e1537;
-            }
         .box {
             position: relative;
             width: 880px;
@@ -155,6 +148,77 @@ courses: { compsci: {week: 1} }
             font-size: 10em;
             z-index: 10;
         }
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        a {
+            position: relative;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            margin: 40px;
+            transition: 1s;
+            text-decoration: none;
+            overflow: hidden;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+        }
+        a:hover {
+            background: var(--clr);
+            box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+        }
+        a::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 400%;
+            background: var(--clr);
+            transition: 1s;
+            animation: animate 2s linear infinite;
+            animation-delay: calc(0.33s * var(--i));
+        }
+        a:hover::before {
+            width: 120%;
+        }
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: #0e1589;
+        }
+        a:hover::after {
+            background: var(--clr);
+        }
+        a span {
+            position: relative;
+            z-index: 1;
+            font-size: 2em;
+            color: white;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transition: 0.5s;
+        }
+        a:hover span {
+            opacity: 1;
+        }
     </style>
 
 
@@ -167,9 +231,7 @@ courses: { compsci: {week: 1} }
     <div class="box">
             <h2><strong>WELCOME!!</strong></h2>
         </div>
-        <br><br><br><br>
-<!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
-        <br>
+        <br><br>
     </div>
     <div class="container">
         <div class="left-half">
@@ -190,7 +252,9 @@ courses: { compsci: {week: 1} }
         </div>
         <div class="right-half">
             <h1 class="p1"><strong>Pixelator</strong></h1>
-            <button id="manipulateButton" class="button">-- -- P i x e l a t e ! -- --</button>
+            <div style="--clr: #ff22bb;--i:0;">
+                <button id="manipulateButton" class="button"><a href="#"><span>Pixelate!</span></a></button>
+            </div>
         </div>
     </div>
     <div class="container">
