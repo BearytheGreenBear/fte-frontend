@@ -180,7 +180,7 @@ courses: { compsci: {week: 1} }
             content: '';
             position: absolute;
             width: 40px;
-            height: 400%;
+            height: 420%;
             background: var(--clr);
             transition: 1s;
             animation: animate 2s linear infinite;
