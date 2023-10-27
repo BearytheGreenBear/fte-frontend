@@ -2,15 +2,12 @@
 toc: false
 comments: true
 layout: post
-title: Image Manipulation
-description: Upload an image
+title: Test Post
+description: Test
 type: hacks
 courses: { compsci: {week: 1} }
 ---
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Define styles for left and right halves */
         .container {
@@ -18,245 +15,77 @@ courses: { compsci: {week: 1} }
             justify-content: space-between;
             align-items: center;
         }
-        @keyframes rgbLightEffect {
-            0% {
-               border-color: #000080;
-            }
-            50% {
-                border-color: #ADD8E6;
-            }
-            100% {
-                border-color: #000080;
-            }
-        }
         .left-half, .right-half, .bottom-half{
-            width: 500px;
-            height: 300px;
-            padding: 10px;
-            box-sizing: border-box;
+            height: 250px;
+            padding: 5px;
             color: black;
-            border: 5.5px solid transparent;
-            animation: rgbLightEffect 7.7s linear infinite;
         }
         .left-half {
-            background-color: #333333;
+            height: 125px;
+            width: 575px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .right-half {
-            background-color: #444444;
+            width: 425px;
             text-align: center;
+            border-left: 3px solid #bde4f4;
         }
         .bottom-half {
-            background-color: #222222;
+            border-top: 3px solid #bde4f4;
             text-align: center;
             align-items: center;
             width: 100%;
         }
-        .p1 {
-            font-family: 'IBM Plex Sans Hebrew', monospace;
-            color: #CCCCCC;
-            /* src: url('fonts/fontface.css');  */
-        }
-        /*@font-face {
-        font-family: 'Roblox';
-        src: url('.././fonts/Roblox-Font.ttf');
-        } */
-        .container2 {
-            background-color: #444444;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'IBM Plex Sans Hebrew', monospace;
-            color: #CCCCCC;
-            border: 5.5px solid transparent;
-            animation: rgbLightEffect 7.7s linear infinite;
-            overflow: break-word;
-        }
-        .dropbtn {
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
         .dropdown {
-            position: relative;
+            /* Add styles to control the drop-down appearance */
             display: inline-block;
         }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            min-width: 160px;
-            overflow: auto;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content option {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .button {
+        .dropbtn {
+            /* Style the drop-down button */
+            display: inline-block;
+            background-color: #fff;
+            color: #000;
+            border: 2px solid black;
+            padding: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            height: 40px;
+            width: 80px;
             border-radius: 10px;
         }
-        {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .box {
-            position: relative;
-            width: 880px;
-            height: 350px;
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            background: rgba(0,0,0,0.5);
-            overflow: hidden;
-            border-radius: 20px;
-        }
-        .box::before {
-            content: '';
-            position: absolute; 
-            width: 150px; 
-            height: 275%;
-            background: linear-gradient(#00ccff,#d400d4);
-            animation: animate 4s linear infinite;
-        }
-        .box::after {
-            content: ''; 
-            position: absolute; 
-            inset: 4px; 
-            background: #0e1538;
-            border-radius: 16px;
-        }
-        @keyframes animate {
-            0%{
-                transform: rotate(0deg);
-            }
-            100%{
-                transform: rotate(360deg);
-            }
-        }
-        .box h2 {
-            position: relative;
-            font-family: 'IBM Plex Sans Hebrew', monospace;
-            color: #fff;
-            font-size: 10em;
-            z-index: 10;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Verdana', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-        a {
-            position: relative;
-            padding: 20px 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.5);
-            margin: 40px;
-            transition: 1s;
-            text-decoration: none;
-            overflow: hidden;
-            -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
-        }
-        a:hover {
-            background: var(--clr);
-            box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
-        }
-        a::before {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 420%;
-            background: var(--clr);
-            transition: 1s;
-            animation: animate 2s linear infinite;
-            animation-delay: calc(0.33s * var(--i));
-        }
-        a:hover::before {
-            width: 120%;
-        }
-        @keyframes animate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        a::after {
-            content: '';
-            position: absolute;
-            inset: 4px;
-            background: #0e1589;
-        }
-        a:hover::after {
-            background: var(--clr);
-        }
-        a span {
-            position: relative;
-            z-index: 1;
-            font-size: 2em;
-            color: white;
-            opacity: 0.5;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            transition: 0.5s;
-        }
-        a:hover span {
-            opacity: 1;
+        /* Style the options in the select element (if needed) */
+        .dropbtn option {
+            background-color: #fff;
+            color: #000;
         }
     </style>
-
-
-
 </head>
-
-
-
 <body>
-    <div class="box">
-            <h2><strong>WELCOME!!</strong></h2>
-        </div>
-        <br><br>
-    </div>
+<!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
     <div class="container">
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
             <input type="file" id="imageInput" accept="image/*">
-            <h3 class="p1">Pixelation Level: </h3>
+        </div>
+        <div class="right-half">
+            <h1 class="p1"><strong>Pixelator</strong></h1>
+            <button id="manipulateButton" class="a">Pixelate!</button>
+        </div>
+    </div>
+        <div class="left-half" style="border-top: 3px solid #bde4f4; width: 419px; border-right: 3px solid #bde4f4;">
+            <label class="p1" style="font-size: 25px; display: inline; padding-right: 4px;">Pixelation Level: </label>
             <div class="dropdown">
-            <select id="pixelationLevel" class="dropbtn">
-                <div class="dropdown-content">
+                <select id="pixelationLevel" class="dropbtn" style="margin-top : 4px;">
                     <option value="2">2</option>
                     <option value="4">4</option>
                     <option value="8" selected>8</option>
                     <option value="16">16</option>
                     <option value="32">32</option>
-                </div>
-            </select>
+                </select>
             </div>
         </div>
-        <div class="right-half">
-            <h1 class="p1"><strong>Pixelator</strong></h1>
-            <div style="--clr: #ff22bb;--i:0;">
-                <button id="manipulateButton" class="button"><a href="#"><span>Pixelate!</span></a></button>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <div class="bottom-half">
             <h1 class="p1"><strong>Pixelated Image</strong></h1>
