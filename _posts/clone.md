@@ -1,19 +1,24 @@
----
-toc: false
-comments: true
-layout: post
-title: Test Post
-description: Test
-type: hacks
-courses: { compsci: {week: 1} }
----
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Define styles for left and right halves */
         .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        @keyframes rgbLightEffect {
+            0% {
+               border-color: #000080;
+            }
+            50% {
+                border-color: #ADD8E6;
+            }
+            100% {
+                border-color: #000080;
+            }
         }
         .left-half, .right-half, .bottom-half{
             width: 500px;
@@ -64,6 +69,7 @@ courses: { compsci: {week: 1} }
             color: white;
             padding: 16px;
             font-size: 16px;
+            border: none;
             cursor: pointer;
         }
         .dropdown {
@@ -87,9 +93,66 @@ courses: { compsci: {week: 1} }
         .button {
             border-radius: 10px;
         }
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box {
+            position: relative;
+            width: 880px;
+            height: 350px;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            background: rgba(0,0,0,0.5);
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .box::before {
+            content: '';
+            position: absolute; 
+            width: 150px; 
+            height: 275%;
+            background: linear-gradient(#00ccff,#d400d4);
+            animation: animate 4s linear infinite;
+        }
+        .box::after {
+            content: ''; 
+            position: absolute; 
+            inset: 4px; 
+            background: #0e1538;
+            border-radius: 16px;
+        }
+        @keyframes animate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .box h2 {
+            position: relative;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #fff;
+            font-size: 10em;
+            z-index: 10;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
         .a {
             position: relative;
-            padding: 13px 24px;
+            padding: 20px 60px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -115,7 +178,7 @@ courses: { compsci: {week: 1} }
             animation-delay: calc(0.33s * var(--i));
         }
         .a:hover::before {
-            width: 1200%;
+            width: 120%;
         }
         @keyframes animate {
             0% {
@@ -148,30 +211,47 @@ courses: { compsci: {week: 1} }
             opacity: 1;
         }
     </style>
+
+
+
 </head>
+
+
+
 <body>
+    <div class="box">
+            <h2><strong>WELCOME!!</strong></h2>
+        </div>
+        <br><br><br><br>
 <!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
+        <br>
+    </div>
     <div class="container">
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
             <input type="file" id="imageInput" accept="image/*">
-        </div>
-        <div style="--clr: 	#6da7d9;--i:0;">
-                <button id="manipulateButton" class="a"><a href="#"><span>Pixelate!</span></a></button>
-            </div>
-    </div>
-        <div class="left-half" style="border-top: 3px solid #bde4f4; width: 419px; border-right: 3px solid #bde4f4;">
-            <label class="p1" style="font-size: 25px; display: inline; padding-right: 4px;">Pixelation Level: </label>
+            <h3 class="p1">Pixelation Level: </h3>
             <div class="dropdown">
-                <select id="pixelationLevel" class="dropbtn" style="margin-top : 4px;">
+            <select id="pixelationLevel" class="dropbtn">
+                <div class="dropdown-content">
                     <option value="2">2</option>
                     <option value="4">4</option>
                     <option value="8" selected>8</option>
                     <option value="16">16</option>
                     <option value="32">32</option>
-                </select>
+                </div>
+            </select>
             </div>
         </div>
+        <div class="right-half">
+            <h1 class="p1"><strong>Pixelator</strong></h1>
+            <br>
+            <br>
+            <div style="--clr: 	#6da7d9;--i:0;">
+                <button id="manipulateButton" class="a"><a href="#"><span>Pixelate!</span></a></button>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="bottom-half">
             <h1 class="p1"><strong>Pixelated Image</strong></h1>
