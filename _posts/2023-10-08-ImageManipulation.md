@@ -16,26 +16,24 @@ courses: { compsci: {week: 1} }
             align-items: center;
         }
         .left-half, .right-half, .bottom-half{
-            width: 500px;
-            height: 300px;
-            padding: 10px;
-            box-sizing: border-box;
+            height: 250px;
+            padding: 5px;
             color: black;
-            border: 5.5px solid transparent;
-            animation: rgbLightEffect 7.7s linear infinite;
         }
         .left-half {
-            background-color: #333333;
+            height: 125px;
+            width: 575px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .right-half {
-            background-color: #444444;
+            width: 425px;
             text-align: center;
+            border-left: 3px solid #bde4f4;
         }
         .bottom-half {
-            background-color: #222222;
+            border-top: 3px solid #bde4f4;
             text-align: center;
             align-items: center;
             width: 100%;
