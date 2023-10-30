@@ -166,11 +166,6 @@ courses: { compsci: {week: 1} }
             width: 50px;
         }
         body{
-            display: flex;
-            justify-content: center;
-            align-items; center;
-            height: 100vh;
-            margin: 0;
             transition: background 0.18s linear;
         }
         body.dark{
