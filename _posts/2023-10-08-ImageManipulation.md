@@ -2,8 +2,8 @@
 toc: false
 comments: true
 layout: post
-title: Test Post
-description: Test
+title: Image Manipulator
+description: 
 type: hacks
 courses: { compsci: {week: 1} }
 ---
