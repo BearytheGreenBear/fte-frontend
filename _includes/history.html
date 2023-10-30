@@ -8,22 +8,27 @@
         //parsing as json
         .then(response => response.json())
         .then(response => {
-            images = response;
+            var images = JSON.parse(response);
+            console.log(images)
             //gets the table id
-            table = document.getElementById(imageTables);
+            var table = document.getElementById("imageTables");
             //loops through and fills in the table
-            images.forEach(entry => {
-                const row = table.insertRow();
-                const nameCell = row.insertCell(0); 
-                const functionCell = row.insertCell(1); 
-                const imageCell = row.insertCell(2);
+            for(var element of images){
+                var row = table.insertRow();
+                var nameCell = row.insertCell(0); 
+                var functionCell = row.insertCell(1); 
+                var imageCell = row.insertCell(2);
 
-                nameCell.innerHTML = entry.name;
-                functionCell.innerHTML = entry.function;
-                imageCell = entry.image;
-            })
+                nameCell.innerHTML = element.name;
+                functionCell.innerHTML = element.func;
+                imageCell.innerHTML = element.image;
+
+                console.log(element);
+            }
         })
     }
+    //calls function to fetch database
+    fetchDatabase();
 </script>
 
 <h2>Image upload history:</h2>
