@@ -165,7 +165,7 @@ courses: { compsci: {week: 1} }
             height: 26px;
             width: 50px;
         }
-        .body{
+        body{
             display: flex;
             justify-content: center;
             align-items; center;
@@ -173,7 +173,7 @@ courses: { compsci: {week: 1} }
             margin: 0;
             transition: background 0.18s linear;
         }
-        .body.dark{
+        body.dark{
             background-color: #292C35;
         }
         .checkbox{
