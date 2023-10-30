@@ -40,6 +40,11 @@ courses: { compsci: {week: 1} }
         }
         .p1 {
             font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #3A3B3C;
+            /* src: url('fonts/fontface.css');  */
+        }
+        .p2 {
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
             /* src: url('fonts/fontface.css');  */
         }
@@ -136,8 +141,9 @@ courses: { compsci: {week: 1} }
             position: relative;
             z-index: 1;
             font-size: 2em;
-            color: white;
-            opacity: 0.5;
+            color: #ffcf01;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            opacity: 0.7;
             text-transform: uppercase;
             letter-spacing: 4px;
             transition: 0.5s;
@@ -145,17 +151,73 @@ courses: { compsci: {week: 1} }
         .a:hover span {
             opacity: 1;
         }
+        *{
+            box-sizing: border-box;
+        }
+        .label{
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            border-radius: 50px;
+            padding: 5px;
+            height: 26px;
+            width: 50px;
+        }
+        .body{
+            display: flex;
+            justify-content: center;
+            align-items; center;
+            height: 100vh;
+            margin: 0;
+            transition: background 0.18s linear;
+        }
+        .body.dark{
+            background-color: #292C35;
+        }
+        .checkbox{
+            opacity: 0;
+            position: absolute;
+        }
+        .ball{
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            transition: transform 0.15s linear;
+        }
+        .checkbox:checked + .label .ball {
+            transform: translateX(24px);
+        }
+        .fa-moon{
+            color: #f1c40f;
+        }
+        .fa-sun{
+            color: #f39c12;
+        }
     </style>
 </head>
 <body>
-<!-- <img src="https://media.tenor.com/RRhijk6pHAoAAAAd/good-morning.gif" alt="Background GIF"> -->
+    <div>
+        <input type="checkbox"
+            class="checkbox" id="checkbox">
+    <label for="checkbox" class="label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+    </label>
+    </div>
     <div class="container">
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
             <input type="file" id="imageInput" accept="image/*">
         </div>
         <div style="--clr: 	#6da7d9;--i:0;">
-                <button id="manipulateButton" class="a"><a href="#"><span>Pixelate!</span></a></button>
+                <button id="manipulateButton" class="a"><a href="#"><span><strong>Pixelate!</strong></span></a></button>
             </div>
     </div>
         <div class="left-half" style="border-top: 3px solid #bde4f4; width: 419px; border-right: 3px solid #bde4f4;">
@@ -181,15 +243,20 @@ courses: { compsci: {week: 1} }
     </div>
     <div class="container2">
         <div>
-            <h1 class="p1"><Strong>How does this work?</Strong></h1>
+            <h1 class="p2"><Strong>How does this work?</Strong></h1>
         </div>
         <div>
-            <h4 class="p1">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
+            <h4 class="p2">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
         </div>
     </div>
 
 
 <script>
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change', ()=>{
+    // change the overall color of the webpage
+    document.body.classList.toggle('dark');
+    });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
     // const url = "http://localhost:8017/api/pixel-partner-api";
