@@ -59,7 +59,7 @@ courses: { compsci: {week: 1} }
             overflow: break-word;
         }
         .dropbtn {
-            color: white;
+            color: black;
             padding: 16px;
             font-size: 16px;
             cursor: pointer;
