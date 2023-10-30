@@ -18,7 +18,8 @@ courses: { compsci: {week: 1} }
         .left-half, .right-half, .bottom-half{
             height: 250px;
             padding: 5px;
-            color: black;
+            color: #444444;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
         }
         .left-half {
             height: 125px;
@@ -169,7 +170,7 @@ courses: { compsci: {week: 1} }
             transition: background 0.18s linear;
         }
         body.dark{
-            background-color: #292C35;
+            background-color: #191d2b;
         }
         .checkbox{
             opacity: 0;
