@@ -18,7 +18,8 @@ courses: { compsci: {week: 1} }
         .left-half, .right-half, .bottom-half{
             height: 250px;
             padding: 5px;
-            color: black;
+            color: #444444;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
         }
         .left-half {
             height: 125px;
@@ -169,7 +170,7 @@ courses: { compsci: {week: 1} }
             transition: background 0.18s linear;
         }
         body.dark{
-            background-color: #292C35;
+            background-color: #191d2b;
         }
         .checkbox{
             opacity: 0;
@@ -197,9 +198,10 @@ courses: { compsci: {week: 1} }
     </style>
 </head>
 <body>
+    <h8 class="p1"><strong>Light Switch down below</strong></h8>
     <div>
         <input type="checkbox"
-            class="checkbox" id="checkbox"> <p><strong>Light Switch down below</strong></p>
+            class="checkbox" id="checkbox" >
     <label for="checkbox" class="label">
         <i class="fas fa-moon"></i>
         <i class="fas fa-sun"></i>
