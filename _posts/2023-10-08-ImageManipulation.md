@@ -204,7 +204,7 @@ courses: { compsci: {week: 1} }
 <body>
     <div>
         <input type="checkbox"
-            class="checkbox" id="checkbox">
+            class="checkbox" id="checkbox"> <p><strong>Light Switch down below</strong></p>
     <label for="checkbox" class="label">
         <i class="fas fa-moon"></i>
         <i class="fas fa-sun"></i>
