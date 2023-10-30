@@ -3,118 +3,217 @@ layout: page
 title: About Our Team
 permalink: /about/
 ---
-
-- The roles that each person has in this team...
-
-<br>
-
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Define styles for left and right halves */
         .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 20vh;
         }
-        @keyframes rgbLightEffect {
-            0% {
-               border-color: red;
-            }
-            10% {
-                border-color: yellow;
-            }
-            20% {
-                border-color: lime;
-            }
-            30% {
-                border-color: aqua;
-            }
-            40% {
-                border-color: blue;
-            }
-            50% {
-                border-color: fuchsia;
-            }
-            60% {
-                border-color: blue;
-            }
-            70% {
-                border-color: aqua;
-            }
-            80% {
-                border-color: lime;
-            }
-            90% {
-                border-color: yellow;
-            }
-            100% {
-                border-color: red;
-            }
+        .left-half, .right-half, .bottom-half{
+            height: 250px;
+            padding: 5px;
+            color: #444444;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+        }
+        .left-half {
+            height: 300px;
+            width: 575px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .right-half {
+            width: 425px;
+            text-align: center;
+            border-left: 3px solid #bde4f4;
+        }
+        .bottom-half {
+            border-top: 3px solid #bde4f4;
+            text-align: center;
+            align-items: center;
+            width: 100%;
         }
         .p1 {
-            font-family: 'Verdana', sans-serif;
-            color: #CCCCCC;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #3A3B3C;
+            /* src: url('fonts/fontface.css');  */
         }
+        .p2 {
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #CCCCCC;
+            /* src: url('fonts/fontface.css');  */
+        }
+        /*@font-face {
+        font-family: 'Roblox';
+        src: url('.././fonts/Roblox-Font.ttf');
+        } */
         .container2 {
             background-color: #444444;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
             border: 5.5px solid transparent;
             animation: rgbLightEffect 7.7s linear infinite;
             overflow: break-word;
         }
-        .container1 {
-            background-color: #444444;
+        .a {
+            position: relative;
+            padding: 13px 24px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            background: rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            transition: 1s;
+            text-decoration: none;
+            overflow: hidden;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+        }
+        .a:hover {
+            background: var(--clr);
+            box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+        }
+        .a::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 420%;
+            background: var(--clr);
+            transition: 1s;
+            animation: animate 2s linear infinite;
+            animation-delay: calc(0.33s * var(--i));
+        }
+        .a:hover::before {
+            width: 1200%;
+        }
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .a::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: #011e41;
+        }
+        .a:hover::after {
+            background: var(--clr);
+        }
+        .a span {
+            position: relative;
+            z-index: 1;
+            font-size: 2em;
+            color: #ffcf01;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transition: 0.5s;
+        }
+        .a:hover span {
+            opacity: 1;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .label{
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            border-radius: 50px;
+            padding: 5px;
+            height: 26px;
+            width: 50px;
+        }
+        body{
+            transition: background 0.18s linear;
+        }
+        body.dark{
+            background-color: #191d2b;
+        }
+        .checkbox{
+            opacity: 0;
+            position: absolute;
+        }
+        .ball{
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            transition: transform 0.15s linear;
+        }
+        .checkbox:checked + .label .ball {
+            transform: translateX(24px);
+        }
+        .fa-moon{
+            color: #f1c40f;
+        }
+        .fa-sun{
+            color: #f39c12;
+        }
+        .light-text{
+            color: #3A3B3C;
+        }
+        .dark-text{ 
             color: #CCCCCC;
-            border: 7px solid transparent;
-            animation: rgbLightEffect 6s linear infinite;
-            overflow: break-word;
         }
     </style>
-
-
-
 </head>
-
-
-
 <body>
-    <div class="container1">
-        <div>
-            <h3 class="p1"><Strong>Scrum Master: </Strong>Ian Wu</h3> 
-        </div>
-        <br>
+<br><br>
+    <h8 class="p1 light-text"><strong>Light Switch down below</strong></h8>
+    <div>
+        <input type="checkbox"
+            class="checkbox" id="checkbox" >
+    <label for="checkbox" class="label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+    </label>
+    </div>
+    <div>
+    <br>
+    <h2 class="p1"> <strong>Scrum Master: Ian Wu</strong></h2>
+    </div>
+    <div>
+    <br>
+    <h3 class="p1"> FrontEnd: Ian Wu, Jason Guan</h3>
+    </div>
+    <div>
+    <br>
+    <h3 class="p1"> BackEnd: Ian Wu, Trever Huang, Kyle Liang</h3>
     </div>
     <br>
-    <br>
-    <div class="container2">
-        <div>
-            <h5 class="p1"><Strong>Front End: </Strong>Ian Wu, Trevor Huang, Jason Guan</h5> 
-        </div>
-        <br>
-    </div>
-    <br>
-    <br>
-    <div class="container2">
-        <div>
-            <h5 class="p1"><Strong>Back End: </Strong>Ian Wu, Kyle Liang</h5> 
-        </div>
-        <br>
-    </div>
-    <br>
+<br>
 
 
+
+<script>
+    const checkbox = document.getElementById('checkbox');
+    const textElements = document.querySelectorAll('.p1, .p2');
+    checkbox.addEventListener('change', () => {
+    document.body.classList.toggle('dark');
+    //change the overall theme color.
+    textElements.forEach((element) => {
+    element.classList.toggle('dark-text');
+    element.classList.toggle('light-text');
+    //change the overall text color.
+    });
+    });
+</script>
 
 </body>
-<br><br><br>
+<br><br>
