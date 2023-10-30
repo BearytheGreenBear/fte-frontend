@@ -1,0 +1,36 @@
+<script>
+    //setting up url
+    const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
+    let images = [];
+    //fetches data from the url
+    function fetchDatabase() {
+        fetch(apiUrl)
+        //parsing as json
+        .then(response => response.json())
+        .then(response => {
+            images = response;
+            //gets the table id
+            table = document.getElementById(imageTables);
+            //loops through and fills in the table
+            images.forEach(entry => {
+                const row = table.insertRow();
+                const nameCell = row.insertCell(0); 
+                const functionCell = row.insertCell(1); 
+                const imageCell = row.insertCell(2);
+
+                nameCell.innerHTML = entry.name;
+                functionCell.innerHTML = entry.function;
+                imageCell = entry.image;
+            })
+        })
+    }
+</script>
+
+<h2>Image upload history:</h2>
+<table id="imageTables">
+    <tr>
+        <th>Name</th>
+        <th>Function</th>
+        <th>Image</th>
+    </tr>
+</table>
