@@ -196,10 +196,16 @@ courses: { compsci: {week: 1} }
         .fa-sun{
             color: #f39c12;
         }
+        .light-text{
+            color: #3A3B3C;
+        }
+        .dark-text{ 
+            color: #CCCCCC;
+        }
     </style>
 </head>
 <body>
-    <h8 class="p1"><strong>Light Switch down below</strong></h8>
+    <h8 class="p1 light-text"><strong>Light Switch down below</strong></h8>
     <div>
         <input type="checkbox"
             class="checkbox" id="checkbox" >
@@ -249,9 +255,15 @@ courses: { compsci: {week: 1} }
 
 <script>
     const checkbox = document.getElementById('checkbox');
-    checkbox.addEventListener('change', ()=>{
-    // change the overall color of the webpage
+    const textElements = document.querySelectorAll('.p1, .p2');
+    checkbox.addEventListener('change', () => {
     document.body.classList.toggle('dark');
+    //change the overall theme color.
+    textElements.forEach((element) => {
+    element.classList.toggle('dark-text');
+    element.classList.toggle('light-text');
+    //change the overall text color.
+    });
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
