@@ -9,8 +9,6 @@ courses: { compsci: {week: 1} }
 ---
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Define styles for left and right halves */
         .container {
@@ -18,97 +16,59 @@ courses: { compsci: {week: 1} }
             justify-content: space-between;
             align-items: center;
         }
-        @keyframes rgbLightEffect {
-            0% {
-                border-color: red;
-            }
-            10% {
-                border-color: yellow;
-            }
-            20% {
-                border-color: lime;
-            }
-            30% {
-                border-color: aqua;
-            }
-            40% {
-                border-color: blue;
-            }
-            50% {
-                border-color: fuchsia;
-            }
-            60% {
-                border-color: blue;
-            }
-            70% {
-                border-color: aqua;
-            }
-            80% {
-                border-color: lime;
-            }
-            90% {
-                border-color: yellow;
-            }
-            100% {
-                border-color: red;
-            }
-        }
-        .left-half,
-        .right-half,
-        .bottom-half {
-            width: 500px;
-            height: 300px;
-            padding: 10px;
-            box-sizing: border-box;
-            color: black;
-            border: 5.5px solid transparent;
-            animation: rgbLightEffect 7.7s linear infinite;
+        .left-half, .right-half, .bottom-half{
+            height: 250px;
+            padding: 5px;
+            color: #444444;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
         }
         .left-half {
-            background-color: #333333;
+            height: 300px;
+            width: 575px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .right-half {
-            background-color: #444444;
+            width: 425px;
             text-align: center;
+            border-left: 3px solid #bde4f4;
         }
         .bottom-half {
-            background-color: #222222;
+            border-top: 3px solid #bde4f4;
             text-align: center;
             align-items: center;
             width: 100%;
         }
         .p1 {
-            font-family: 'Verdana', sans-serif;
-            color: #CCCCCC;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #3A3B3C;
+            /* src: url('fonts/fontface.css');  */
         }
+        .p2 {
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            color: #CCCCCC;
+            /* src: url('fonts/fontface.css');  */
+        }
+        /*@font-face {
+        font-family: 'Roblox';
+        src: url('.././fonts/Roblox-Font.ttf');
+        } */
         .container2 {
             background-color: #444444;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Verdana', sans-serif;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
             color: #CCCCCC;
             border: 5.5px solid transparent;
             animation: rgbLightEffect 7.7s linear infinite;
             overflow: break-word;
         }
-        .container3 {
-            background-color: #444444;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Verdana', sans-serif;
-            border: 5.5px solid transparent;
-            border-color: red;
-        }
         .dropbtn {
-            color: white;
+            color: black;
             padding: 16px;
             font-size: 16px;
-            border: none;
             cursor: pointer;
         }
         .dropdown {
@@ -120,7 +80,7 @@ courses: { compsci: {week: 1} }
             position: absolute;
             min-width: 160px;
             overflow: auto;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
         .dropdown-content option {
@@ -132,13 +92,122 @@ courses: { compsci: {week: 1} }
         .button {
             border-radius: 10px;
         }
+        .a {
+            position: relative;
+            padding: 13px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            transition: 1s;
+            text-decoration: none;
+            overflow: hidden;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+        }
+        .a:hover {
+            background: var(--clr);
+            box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+        }
+        .a::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 420%;
+            background: var(--clr);
+            transition: 1s;
+            animation: animate 2s linear infinite;
+            animation-delay: calc(0.33s * var(--i));
+        }
+        .a:hover::before {
+            width: 1200%;
+        }
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .a::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: #011e41;
+        }
+        .a:hover::after {
+            background: var(--clr);
+        }
+        .a span {
+            position: relative;
+            z-index: 1;
+            font-size: 2em;
+            color: #ffcf01;
+            font-family: 'IBM Plex Sans Hebrew', monospace;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transition: 0.5s;
+        }
+        .a:hover span {
+            opacity: 1;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .label{
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            border-radius: 50px;
+            padding: 5px;
+            height: 26px;
+            width: 50px;
+        }
+        body{
+            transition: background 0.18s linear;
+        }
+        body.dark{
+            background-color: #191d2b;
+        }
+        .checkbox{
+            opacity: 0;
+            position: absolute;
+        }
+        .ball{
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            transition: transform 0.15s linear;
+        }
+        .checkbox:checked + .label .ball {
+            transform: translateX(24px);
+        }
+        .fa-moon{
+            color: #f1c40f;
+        }
+        .fa-sun{
+            color: #f39c12;
+        }
     </style>
 </head>
-
-
-
 <body>
-    <div class="container3">
+    <h8 class="p1"><strong>Light Switch down below</strong></h8>
+    <div>
+        <input type="checkbox"
+            class="checkbox" id="checkbox" >
+    <label for="checkbox" class="label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+    </label>
     </div>
     <div class="container">
         <div class="left-half">
@@ -155,31 +224,35 @@ courses: { compsci: {week: 1} }
             </select>
             </div>
         </div>
-        <div class="right-half">
-            <h1 class="p1"><strong>Merge</strong></h1>
-            <button id="manipulateButton" class="button">-- -- Merge ! -- --</button>
+        <div style="--clr: 	#6da7d9;--i:0;">
+                <button id="manipulateButton" class="a"><a href="#"><span><strong>Merge!</strong></span></a></button>
         </div>
     </div>
     <div class="container">
         <div class="bottom-half">
-            <h1 class="p1"><strong>Pixelated Image</strong></h1>
+            <h1 class="p1"><strong>Merged Image</strong></h1>
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
             <br>
-            <button id="downloadButton" class="button">Download Pixelated Image</button>
+            <button id="downloadButton" class="button">Download Merged Image</button>
             <br>
         </div>
     </div>
     <div class="container2">
         <div>
-            <h1 class="p1"><Strong>How does this work?</Strong></h1>
+            <h1 class="p1" style="color:white;"><Strong>How does this work?</Strong></h1>
         </div>
         <div>
-            <h4 class="p1">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
+            <h4 class="p1" style="color:white;">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
         </div>
     </div>
 
 
 <script>
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change', ()=>{
+    // change the overall color of the webpage
+    document.body.classList.toggle('dark');
+    });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
     // const url = "http://localhost:8017/api/pixel-partner-api";
