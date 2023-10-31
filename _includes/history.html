@@ -1,8 +1,16 @@
 <script>
     //setting up url
-    // const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
-    const apiUrl = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/get_database";
+    const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
+    // const apiUrl = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/get_database";
     let images = [];
+    let downloadButtons = [];
+    // handle downloading images
+    function downloadImage(imageData, imageName) {
+        const link = document.createElement('a');
+        link.href = 'data:image/jpeg;base64,' + imageData; // Update the MIME type if needed
+        link.download = imageName;
+        link.click();
+    }
     //fetches data from the url
     function fetchDatabase() {
         fetch(apiUrl)
@@ -19,15 +27,25 @@
                 var nameCell = row.insertCell(0); 
                 var functionCell = row.insertCell(1); 
                 var imageCell = row.insertCell(2);
+                var buttonCell = row.insertCell(3);
 
                 nameCell.innerHTML = element.name;
                 functionCell.innerHTML = element.func;
 
                 const fileExtension = element.name.split('.').pop();
-
                 var Imagecell = new Image();
                 Imagecell.src = 'data:image/' + fileExtension + ';base64,' + element.image;
                 imageCell.appendChild(Imagecell)
+
+                var downloadButton = document.createElement('button');
+                downloadButton.textContent = 'Download';
+                downloadButton.addEventListener('click', (function(image, name) {
+                    return function() {
+                        downloadImage(image, name);
+                    };
+                })(element.image, element.name));
+
+                buttonCell.appendChild(downloadButton);
 
                 console.log(element);
             }
