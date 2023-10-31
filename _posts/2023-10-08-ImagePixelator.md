@@ -2,7 +2,7 @@
 toc: false
 comments: true
 layout: post
-title: Image Manipulator
+title: Image Pixelator
 description: 
 type: hacks
 courses: { compsci: {week: 1} }
@@ -270,8 +270,8 @@ courses: { compsci: {week: 1} }
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    // const url = "http://localhost:8017/api/pixel-partner-api";
-    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
+    const url = "http://localhost:8017/api/pixel-partner-api";
+    // const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
     const options = {

@@ -9,7 +9,7 @@
         //parsing as json
         .then(response => response.json())
         .then(response => {
-            var images = JSON.parse(response);
+            var images = JSON.parse(response).reverse();
             console.log(images)
             //gets the table id
             var table = document.getElementById("imageTables");

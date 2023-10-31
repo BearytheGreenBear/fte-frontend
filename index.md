@@ -11,7 +11,7 @@ feature_rows:
     excerpt: Pixelate images to various levels!
     img_path: ../../images/pixelated.jpg
     img_alt: Pixelated Image
-    url: /2023/10/08/ImageManipulation.html
+    url: /2023/10/08/ImagePixelator.html
   - title: Image Combiner
     excerpt: Combine multiple images together!
     img_path: ../../images/combined.jpg
