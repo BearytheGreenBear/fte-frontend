@@ -223,26 +223,12 @@ courses: { compsci: {week: 1} }
                 <button id="manipulateButton" class="a"><a href="#"><span><strong>Grayscale!</strong></span></a></button>
             </div>
     </div>
-        <div class="left-half" style="border-top: 3px solid #bde4f4; width: 419px; border-right: 3px solid #bde4f4;">
-            <label class="p1" style="font-size: 25px; display: inline; padding-right: 4px;">Pixelation Level: </label>
-            <div class="dropdown">
-                <select id="pixelationLevel" class="dropbtn" style="margin-top : 4px;">
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="8" selected>8</option>
-                    <option value="16">16</option>
-                    <option value="32">32</option>
-                </select>
-                <input type="checkbox" id="addToDatabase" name="addToDatabase">
-                <label for="addToDatabase">Add to Database</label>
-            </div>
-        </div>
     <div class="container">
         <div class="bottom-half">
-            <h1 class="p1"><strong>Pixelated Image</strong></h1>
+            <h1 class="p1"><strong>Grayscaled Images</strong></h1>
             <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%; display: none;">
             <br>
-            <button id="downloadButton" class="button">Download Pixelated Image</button>
+            <button id="downloadButton" class="button">Download Grayscaled Image</button>
             <br>
         </div>
     </div>
@@ -251,7 +237,7 @@ courses: { compsci: {week: 1} }
             <h1 class="p2"><Strong>How does this work?</Strong></h1>
         </div>
         <div>
-            <h4 class="p2">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
+            <h4 class="p2">Type...</h4>
         </div>
     </div>
 
