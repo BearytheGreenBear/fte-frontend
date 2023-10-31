@@ -167,7 +167,7 @@ courses: { compsci: {week: 1} }
             width: 50px;
         }
         body{
-            transition: background 0.18s linear;
+            transition: background 0.14s linear;
         }
         body.dark{
             background-color: #191d2b;
