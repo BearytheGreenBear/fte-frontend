@@ -1,6 +1,7 @@
 <script>
     //setting up url
-    const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
+    // const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
+    const apiUrl = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/get_database";
     let images = [];
     //fetches data from the url
     function fetchDatabase() {
@@ -21,7 +22,12 @@
 
                 nameCell.innerHTML = element.name;
                 functionCell.innerHTML = element.func;
-                imageCell.innerHTML = element.image;
+
+                const fileExtension = element.name.split('.').pop();
+
+                var Imagecell = new Image();
+                Imagecell.src = 'data:image/' + fileExtension + ';base64,' + element.image;
+                imageCell.appendChild(Imagecell)
 
                 console.log(element);
             }
