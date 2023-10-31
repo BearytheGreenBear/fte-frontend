@@ -1,3 +1,24 @@
+<head>
+    <!-- load jQuery and DataTables output style and scripts -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"> -->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+
+<h2>Image upload history:</h2>
+<table id="demo" class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Function</th>
+            <th>Image</th>
+            <th>Download</th>
+        </tr>
+    </thead>
+    <tbody id="imageTables">
+    </tbody>
+</table>
+
 <script>
     //setting up url
     const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
@@ -13,53 +34,29 @@
     }
     //fetches data from the url
     function fetchDatabase() {
+        $(document).ready(function () {
+            $.noConflict();
+        });
         fetch(apiUrl)
         //parsing as json
         .then(response => response.json())
         .then(response => {
             var images = JSON.parse(response).reverse();
-            console.log(images)
-            //gets the table id
-            var table = document.getElementById("imageTables");
-            //loops through and fills in the table
-            for(var element of images){
-                var row = table.insertRow();
-                var nameCell = row.insertCell(0); 
-                var functionCell = row.insertCell(1); 
-                var imageCell = row.insertCell(2);
-                var buttonCell = row.insertCell(3);
+            console.log(images);
+            for (var element of images) {
+                var fileExtension = element.name.split('.').pop();
+                var downloadButton = `<button onclick="downloadImage('${element.image}', '${element.name}')">Download</button>`;
+                var imageTag = `<img src="data:image/${fileExtension};base64,${element.image}" width="100" height="100" />`;
 
-                nameCell.innerHTML = element.name;
-                functionCell.innerHTML = element.func;
-
-                const fileExtension = element.name.split('.').pop();
-                var Imagecell = new Image();
-                Imagecell.src = 'data:image/' + fileExtension + ';base64,' + element.image;
-                imageCell.appendChild(Imagecell)
-
-                var downloadButton = document.createElement('button');
-                downloadButton.textContent = 'Download';
-                downloadButton.addEventListener('click', (function(image, name) {
-                    return function() {
-                        downloadImage(image, name);
-                    };
-                })(element.image, element.name));
-
-                buttonCell.appendChild(downloadButton);
-
-                console.log(element);
+                $('#demo').DataTable().row.add({
+                    0: element.name,       // Name
+                    1: element.func,       // Function
+                    2: imageTag,           // Image (display the image)
+                    3: downloadButton,     // Download
+                }).draw();
             }
         })
     }
     //calls function to fetch database
     fetchDatabase();
 </script>
-
-<h2>Image upload history:</h2>
-<table id="imageTables">
-    <tr>
-        <th>Name</th>
-        <th>Function</th>
-        <th>Image</th>
-    </tr>
-</table>
