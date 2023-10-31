@@ -22,4 +22,9 @@ feature_rows:
     img_path: ../../images/history.png
     img_alt: Image table
     url: //2023/10/29/History.html
+  - title: Grayscale
+    excerpt: Grayscale your images!
+    img_path: ../../images/grayscaledimage.png
+    img_alt: Grayscaled Image
+    url: /2023/10/31/Grayscale.html
 ---
