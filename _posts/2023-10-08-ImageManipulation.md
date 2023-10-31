@@ -233,6 +233,8 @@ courses: { compsci: {week: 1} }
                     <option value="16">16</option>
                     <option value="32">32</option>
                 </select>
+                <input type="checkbox" id="addToDatabase" name="addToDatabase">
+                <label for="addToDatabase">Add to Database</label>
             </div>
         </div>
     <div class="container">
@@ -268,8 +270,8 @@ courses: { compsci: {week: 1} }
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    // const url = "http://localhost:8017/api/pixel-partner-api";
-    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
+    const url = "http://localhost:8017/api/pixel-partner-api";
+    // const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
     const options = {
@@ -314,6 +316,7 @@ courses: { compsci: {week: 1} }
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
         const pixelationLevel = document.getElementById('pixelationLevel').value;
+        const addToDatabaseCheckbox = document.getElementById('addToDatabase'); // Add this line
         const leftHalf = document.getElementById('left-half'); //new code
 
         const file = imageInput.files[0];
@@ -326,9 +329,15 @@ courses: { compsci: {week: 1} }
                 const fileName = file.name;
                 uploadedImageName = file.name;
                 const fileExtension = fileName.split('.').pop();
+                const addToDatabase = addToDatabaseCheckbox.checked;
+                // Create the data object to send to the backend
+                const data = {
+                    "pixelate_level": pixelationLevel,
+                    "addToHistory": addToDatabase,
+                    "base64image": base64Data,
+                };
+                console.log(data)
                 // fetch the API
-                // add option to change pixelate level
-                data = {"pixelate_level": pixelationLevel, "base64image": base64Data}
                 const image_options = {...post_options, method: 'POST', body: JSON.stringify(data)};
                 fetch(pixelate_url, image_options)
                 .then(response => {

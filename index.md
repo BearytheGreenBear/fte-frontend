@@ -17,4 +17,9 @@ feature_rows:
     img_path: ../../images/combined.jpg
     img_alt: Stacked Images
     url: //2023/10/20/ImageCombine.html
+  - title: Upload History
+    excerpt: View previously uploaded images!
+    img_path: ../../images/history.png
+    img_alt: Image table
+    url: //2023/10/29/History.html
 ---
