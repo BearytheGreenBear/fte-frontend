@@ -21,9 +21,10 @@
 
 <script>
     //setting up url
-    const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
-    const apiUrl2 = "http://localhost:8017/api/pixel-partner-api/clear_database";
-    //const apiUrl = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/get_database";
+    // const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
+    // apiUrl2 = "http://localhost:8017/api/pixel-partner-api/clear_database";
+    const apiUrl2 = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/clear_database";
+    const apiUrl = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/get_database";
     let images = [];
     let downloadButtons = [];
     // handle downloading images
@@ -63,7 +64,6 @@
 
     function clearDatabase() {
         fetch(apiUrl2, {method: 'GET'})
-
     }
 </script>
 
@@ -75,4 +75,4 @@
         <th>Function</th>
         <th>Image</th>
     </tr>
-</table>
+</table>D
