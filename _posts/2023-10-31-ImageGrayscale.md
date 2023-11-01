@@ -236,10 +236,10 @@ courses: { compsci: {week: 1} }
         </div>
     </div>
         <div>
-            <h1 class="p2"><Strong>How does this work?</Strong></h1>
+            <h1 class="p1"><Strong>How does this work?</Strong></h1>
         </div>
         <div>
-            <h4 class="p2">This works by averaging out the RGB values in each pixel in the image, then changes all the RGB values in that pixel to the average, turing the pixel gray. It then recombines all the pixels to form a grayscale image!</h4>
+            <h4 class="p1">This works by averaging out the RGB values in each pixel in the image, then changes all the RGB values in that pixel to the average, turing the pixel gray. It then recombines all the pixels to form a grayscale image!</h4>
         </div>
 
 
