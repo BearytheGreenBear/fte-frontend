@@ -5,7 +5,7 @@ layout: post
 title: Image Grayscale
 description: Grayscale your images!
 type: hacks
-courses: { compsci: {week: 1} }
+courses: { compsci: {week: 2} }
 ---
 <head>
     <style>

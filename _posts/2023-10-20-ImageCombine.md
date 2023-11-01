@@ -5,7 +5,7 @@ layout: post
 title: Image Combiner
 description: Upload two images!
 type: hacks
-courses: { compsci: {week: 1} }
+courses: { compsci: {week: 2} }
 ---
 
 <head>
