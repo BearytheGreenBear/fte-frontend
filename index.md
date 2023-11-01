@@ -26,5 +26,5 @@ feature_rows:
     excerpt: Grayscale your images!
     img_path: ../../images/grayscaledimage.png
     img_alt: Grayscaled Image
-    url: /2023/10/31/Grayscale.html
+    url: /2023/10/31/ImageGrayscale.html
 ---

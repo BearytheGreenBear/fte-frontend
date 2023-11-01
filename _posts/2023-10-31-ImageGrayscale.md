@@ -22,7 +22,7 @@ courses: { compsci: {week: 1} }
             font-family: 'IBM Plex Sans Hebrew', monospace;
         }
         .left-half {
-            height: 125px;
+            height: 200px;
             width: 575px;
             display: flex;
             flex-direction: column;
@@ -218,6 +218,9 @@ courses: { compsci: {week: 1} }
         <div class="left-half">
             <h1 class="p1"><strong>Upload an Image</strong></h1>
             <input type="file" id="imageInput" accept="image/*">
+            <br>
+            <input type="checkbox" id="addToDatabase" name="addToDatabase">
+            <label for="addToDatabase">Add to Database</label>
         </div>
         <div style="--clr: 	#6da7d9;--i:0;">
                 <button id="manipulateButton" class="a"><a href="#"><span><strong>Grayscale!</strong></span></a></button>
@@ -256,10 +259,11 @@ courses: { compsci: {week: 1} }
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    const url = "http://localhost:8017/api/pixel-partner-api";
-    // const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
+    // const url = "http://localhost:8017/api/pixel-partner-api";
+    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
+    const grayscale_url = url + "/grayscale";
     const options = {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -301,7 +305,6 @@ courses: { compsci: {week: 1} }
     function handleImageUpload() {
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
-        const pixelationLevel = document.getElementById('pixelationLevel').value;
         const addToDatabaseCheckbox = document.getElementById('addToDatabase'); // Add this line
         const leftHalf = document.getElementById('left-half'); //new code
 
@@ -318,7 +321,6 @@ courses: { compsci: {week: 1} }
                 const addToDatabase = addToDatabaseCheckbox.checked;
                 // Create the data object to send to the backend
                 const data = {
-                    "pixelate_level": pixelationLevel,
                     "addToHistory": addToDatabase,
                     "filename": fileName,
                     "base64image": base64Data,
@@ -326,7 +328,7 @@ courses: { compsci: {week: 1} }
                 console.log(data)
                 // fetch the API
                 const image_options = {...post_options, method: 'POST', body: JSON.stringify(data)};
-                fetch(pixelate_url, image_options)
+                fetch(grayscale_url, image_options)
                 .then(response => {
                     // check for response errors
                     if (response.status !== 200) {
@@ -376,7 +378,7 @@ courses: { compsci: {week: 1} }
         // Create an anchor element for downloading
         const downloadLink = document.createElement('a');
         downloadLink.href = pixelatedImage.src;
-        downloadLink.download = uploadedImageName.split('.')[0] + "_pixelated." + uploadedImageName.split('.')[1];
+        downloadLink.download = uploadedImageName.split('.')[0] + "_grayscaled." + uploadedImageName.split('.')[1];
         downloadLink.style.display = 'none';
 
         // Append the anchor element to the document and trigger a click event
