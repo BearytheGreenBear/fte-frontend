@@ -22,4 +22,14 @@ feature_rows:
     img_path: ../../images/history.png
     img_alt: Image table
     url: //2023/10/29/History.html
+  - title: Grayscale
+    excerpt: Grayscale your images!
+    img_path: ../../images/grayscaledimage.png
+    img_alt: Grayscaled Image
+    url: /2023/10/31/ImageGrayscale.html
+  - title: Colorscale
+    excerpt: Change the color of your mages!
+    img_path: ../../images/colorscale.jpg
+    img_alt: Colorscaled Image
+    url: /2023/11/01/ImageColorscale.html
 ---
