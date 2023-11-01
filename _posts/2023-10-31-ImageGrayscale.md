@@ -2,8 +2,8 @@
 toc: false
 comments: true
 layout: post
-title: Grayscale
-description: 
+title: Image Grayscale
+description: Grayscale your images!
 type: hacks
 courses: { compsci: {week: 1} }
 ---
