@@ -22,7 +22,7 @@ courses: { compsci: {week: 1} }
             font-family: 'IBM Plex Sans Hebrew', monospace;
         }
         .left-half {
-            height: 125px;
+            height: 170px;
             width: 575px;
             display: flex;
             flex-direction: column;
@@ -233,6 +233,7 @@ courses: { compsci: {week: 1} }
                     <option value="16">16</option>
                     <option value="32">32</option>
                 </select>
+                <br><br>
                 <input type="checkbox" id="addToDatabase" name="addToDatabase">
                 <label for="addToDatabase">Add to Database</label>
             </div>
@@ -246,14 +247,12 @@ courses: { compsci: {week: 1} }
             <br>
         </div>
     </div>
-    <div class="container2">
         <div>
-            <h1 class="p2"><Strong>How does this work?</Strong></h1>
+            <h1 class="p1"><Strong>How does this work?</Strong></h1>
         </div>
         <div>
-            <h4 class="p2">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
+            <h4 class="p1">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
         </div>
-    </div>
 
 
 <script>
@@ -270,8 +269,8 @@ courses: { compsci: {week: 1} }
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    const url = "http://localhost:8017/api/pixel-partner-api";
-    // const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
+    // const url = "http://localhost:8017/api/pixel-partner-api";
+    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
     const options = {

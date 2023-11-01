@@ -23,7 +23,7 @@ courses: { compsci: {week: 1} }
             font-family: 'IBM Plex Sans Hebrew', monospace;
         }
         .left-half {
-            height: 300px;
+            height: 350px;
             width: 575px;
             display: flex;
             flex-direction: column;
@@ -228,6 +228,9 @@ courses: { compsci: {week: 1} }
                     <option value="Horizontal">Horizontal</option>
                 </div>
             </select>
+            <br><br>
+                <input type="checkbox" id="addToDatabase" name="addToDatabase">
+                <label for="addToDatabase">Add to Database</label>
             </div>
         </div>
         <div style="--clr: 	#6da7d9;--i:0;">
@@ -243,15 +246,6 @@ courses: { compsci: {week: 1} }
             <br>
         </div>
     </div>
-    <div class="container2">
-        <div>
-            <h1 class="p1" style="color:white;"><Strong>How does this work?</Strong></h1>
-        </div>
-        <div>
-            <h4 class="p1" style="color:white;">The above pixelate function works by downscaling the image and averaging out the RGB values over a certain box, depending on the size you specify (unfortunately not implemented yet). Then, it rescales the image up to create a pixelated image!</h4>
-        </div>
-    </div>
-
 
 <script>
     const checkbox = document.getElementById('checkbox');
@@ -315,6 +309,7 @@ courses: { compsci: {week: 1} }
         const imageInput2 = document.getElementById('imageInput2');
         const uploadedImage = document.getElementById('uploadedImage');
         const direction = document.getElementById('direction').value;
+        const addToDatabaseCheckbox = document.getElementById('addToDatabase'); // Add this line
         const leftHalf = document.getElementById('left-half'); //new code
 
         const file = imageInput.files[0];
@@ -333,12 +328,19 @@ courses: { compsci: {week: 1} }
                 const fileName = file.name;
                 uploadedImageName = file.name;
                 const fileExtension = fileName.split('.').pop();
+                const addToDatabase = addToDatabaseCheckbox.checked;
 
                 reader2.onload = function (f) {
                     image2Data = f.target.result.split(',')[1];
 
                     // Fetch the API with both image data
-                    data = {"direction": direction, "base64image1": image1Data, "base64image2": image2Data}
+                    data = {
+                        "direction": direction, 
+                        "base64image1": image1Data, 
+                        "base64image2": image2Data,
+                        "addToHistory": addToDatabase,
+                        "filename": fileName,
+                    }
                     console.log(data)
                     const imageOptions = {...post_options, method: 'POST', body: JSON.stringify(data)};
                     fetch(combine_url, imageOptions)
