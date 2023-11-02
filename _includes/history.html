@@ -6,7 +6,7 @@
 </head>
 
 <h2>Image upload history:</h2>
-<button onclick="clearDatabase()">Press this button to clear the data</button>
+<button onclick="clearDatabase()" onclick="refreshPage()">Press this button to clear the data</button>
 <table id="demo" class="table">
     <thead>
         <tr>
@@ -22,8 +22,8 @@
 
 <script>
     //setting up url
-    // const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
-    // apiUrl2 = "http://localhost:8017/api/pixel-partner-api/clear_database";
+    //const apiUrl = "http://localhost:8017/api/pixel-partner-api/get_database";
+    //const apiUrl2 = "http://localhost:8017/api/pixel-partner-api/clear_database";
     const apiUrl2 = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/clear_database";
     const apiUrl = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api/get_database";
     let images = [];
@@ -65,5 +65,11 @@
 
     function clearDatabase() {
         fetch(apiUrl2, {method: 'GET'})
+        .catch(err => {
+            error(err + " " + test_url);
+            });
+    }
+    function refreshPage() {
+        window.location.reload();
     }
 </script>
