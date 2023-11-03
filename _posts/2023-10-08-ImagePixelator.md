@@ -3,7 +3,7 @@ toc: false
 comments: true
 layout: post
 title: Image Pixelator
-description: 
+description: Pixelate Images!
 type: hacks
 courses: { compsci: {week: 1} }
 ---
@@ -201,6 +201,10 @@ courses: { compsci: {week: 1} }
         .dark-text{ 
             color: #CCCCCC;
         }
+        .bee {
+            transform: rotate(0deg); /* Initial rotation */
+            transition: transform 0.2s; /* Smooth rotation transition */
+        }
     </style>
 </head>
 <body>
@@ -223,7 +227,7 @@ courses: { compsci: {week: 1} }
                 <button id="manipulateButton" class="a"><a href="#"><span><strong>Pixelate!</strong></span></a></button>
             </div>
     </div>
-        <div class="left-half" style="border-top: 3px solid #bde4f4; width: 419px; border-right: 3px solid #bde4f4;">
+        <div class="left-half" style="border-top: 3px solid #bde4f4; width: 419px; border-right: 3px solid #bde4f4; height: 205px;">
             <label class="p1" style="font-size: 25px; display: inline; padding-right: 4px;">Pixelation Level: </label>
             <div class="dropdown">
                 <select id="pixelationLevel" class="dropbtn" style="margin-top : 4px;">
@@ -236,6 +240,9 @@ courses: { compsci: {week: 1} }
                 <br><br>
                 <input type="checkbox" id="addToDatabase" name="addToDatabase">
                 <label for="addToDatabase">Add to Database</label>
+                <br>
+                <button id="spawnBeeButton">Harmless Button</button>
+                <img src="../../../images/bee.jpg" alt="Bee" class="bee" id="bee" style="position: absolute; display: none;">
             </div>
         </div>
     <div class="container">
@@ -256,6 +263,77 @@ courses: { compsci: {week: 1} }
 
 
 <script>
+    const bee = document.getElementById('bee');
+    const spawnBeeButton = document.getElementById('spawnBeeButton');
+
+    // Function to generate a random position within the screen bounds
+    function getRandomPosition() {
+        const maxWidth = window.innerWidth - bee.clientWidth;
+        const maxHeight = window.innerHeight - bee.clientHeight;
+        const randomX = Math.floor(Math.random() * maxWidth);
+        const randomY = Math.floor(Math.random() * maxHeight);
+        return { x: randomX, y: randomY };
+    }
+
+    // Function to calculate the rotation angle based on the direction
+    function calculateRotation(currentX, currentY, destinationX, destinationY) {
+        const angle = Math.atan2(destinationY - currentY, destinationX - currentX);
+        return angle * (180 / Math.PI);
+    }
+
+    // Function to spawn and animate the bee
+    function spawnBee() {
+        alert('Oh no! You found a bug in our code! Help us get rid of it!');
+        bee.style.display = 'block'; // Show the bee
+
+        // Get a random initial position for the bee
+        const startPosition = getRandomPosition();
+        bee.style.left = startPosition.x + 'px';
+        bee.style.top = startPosition.y + 'px';
+
+        // Animate the bee
+        let destination = getRandomPosition();
+        const speed = 5;
+
+        const animationInterval = setInterval(() => {
+            const currentX = parseFloat(bee.style.left);
+            const currentY = parseFloat(bee.style.top);
+
+            // Calculate the rotation angle
+            const rotationAngle = calculateRotation(currentX, currentY, destination.x, destination.y);
+            bee.style.transform = `rotate(${rotationAngle}deg)`; // Apply rotation
+
+            // Calculate the direction vector
+            const deltaX = destination.x - currentX;
+            const deltaY = destination.y - currentY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            if (distance <= speed) {
+                // If the bee is close to the destination, snap to it
+                bee.style.left = destination.x + 'px';
+                bee.style.top = destination.y + 'px';
+                destination = getRandomPosition(); // Get a new random destination
+            } else {
+                // Move the bee at a constant speed
+                const directionX = deltaX / distance;
+                const directionY = deltaY / distance;
+                bee.style.left = (currentX + directionX * speed) + 'px';
+                bee.style.top = (currentY + directionY * speed) + 'px';
+            }
+        }, 20); // Adjust the animation speed
+    }
+
+    // Add a click event listener to the button
+    spawnBeeButton.addEventListener('click', spawnBee);
+
+    // Add a click event listener to the bee (outside the function)
+    document.addEventListener('click', function (event) {
+        if (event.target.id === 'bee') {
+            bee.style.display = 'none';
+            alert('Great job! Thanks for helping us catch the bug!');
+        }
+    });
+
     const checkbox = document.getElementById('checkbox');
     const textElements = document.querySelectorAll('.p1, .p2');
     checkbox.addEventListener('change', () => {
@@ -269,8 +347,8 @@ courses: { compsci: {week: 1} }
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    // const url = "http://localhost:8017/api/pixel-partner-api";
-    const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
+    const url = "http://localhost:8017/api/pixel-partner-api";
+    //const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
     const options = {
