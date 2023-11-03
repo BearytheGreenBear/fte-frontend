@@ -335,7 +335,7 @@ courses: { compsci: {week: 1} }
     });
 
     const checkbox = document.getElementById('checkbox');
-    const textElements = document.querySelectorAll('.p1, .p2');
+    const textElements = document.querySelectorAll('.p1, .p2, h1');
     checkbox.addEventListener('change', () => {
     document.body.classList.toggle('dark');
     //change the overall theme color.
