@@ -283,7 +283,7 @@ courses: { compsci: {week: 1} }
 
     // Function to spawn and animate the bee
     function spawnBee() {
-        alert('Oh no! You found a bug in our code! Help us get rid of it!');
+        alert('Oh no! You found a bug in our code! Help us get catch it!');
         bee.style.display = 'block'; // Show the bee
 
         // Get a random initial position for the bee
