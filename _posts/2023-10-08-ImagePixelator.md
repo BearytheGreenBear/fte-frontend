@@ -242,7 +242,7 @@ courses: { compsci: {week: 1} }
                 <label for="addToDatabase">Add to Database</label>
                 <br>
                 <button id="spawnBeeButton">Harmless Button</button>
-                <img src="../../../images/bee.jpg" alt="Bee" class="bee" id="bee" style="position: absolute; display: none;">
+                <img src="../../../images/bee.png" alt="Bee" class="bee" id="bee" style="position: absolute; display: none;">
             </div>
         </div>
     <div class="container">
@@ -347,7 +347,7 @@ courses: { compsci: {week: 1} }
     });
     uploadedImageName = "";
     const resultContainer = document.getElementById("result");
-    const url = "http://localhost:8017/api/pixel-partner-api";
+    const url = "http://localhost:8016/api/pixel-partner-api";
     //const url = "https://fte.stu.nighthawkcodingsociety.com/api/pixel-partner-api";
     const test_url = url + "/test";
     const pixelate_url = url + "/pixelate/";
@@ -414,7 +414,6 @@ courses: { compsci: {week: 1} }
                     "filename": fileName,
                     "base64image": base64Data,
                 };
-                console.log(data)
                 // fetch the API
                 const image_options = {...post_options, method: 'POST', body: JSON.stringify(data)};
                 fetch(pixelate_url, image_options)
